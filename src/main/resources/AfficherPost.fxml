@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="702.0" prefWidth="932.0" style="-fx-background-color: #8c8fad;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Post">
+<AnchorPane prefHeight="702.0" prefWidth="932.0" style="-fx-background-color: #8c8fad;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherPost">
    <children>
       <HBox prefHeight="36.0" prefWidth="932.0">
          <children>
@@ -26,9 +26,9 @@
                            </image>
                         </ImageView>
                         <HBox layoutX="62.0" prefHeight="44.0" prefWidth="56.0" />
-                        <TextField fx:id="searchTextField" editable="false" layoutX="278.0" layoutY="15.0" prefHeight="44.0" prefWidth="529.0" promptText="rechercher sur GAMI..." style="-fx-background-radius: 10; -fx-font-weight: bold;" />
+                        <TextField fx:id="searchTextField" layoutX="278.0" layoutY="15.0" prefHeight="44.0" prefWidth="529.0" promptText="rechercher sur GAMI..." style="-fx-background-radius: 10; -fx-font-weight: bold;" />
                         <HBox layoutX="278.0" prefHeight="44.0" prefWidth="56.0" />
-                        <Button layoutX="887.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #b2b6eb; -fx-background-radius: 10; -fx-font-weight: bold;" text="🠔" textAlignment="JUSTIFY">
+                        <Button layoutX="887.0" layoutY="14.0" mnemonicParsing="false" onAction="#retournerAajouterPost" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #b2b6eb; -fx-background-radius: 10; -fx-font-weight: bold;" text="🠔" textAlignment="JUSTIFY">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -73,6 +73,7 @@
                                     <TextField fx:id="dateTextField" editable="false" layoutX="286.0" layoutY="35.0" />
                                     <TextField fx:id="likesTextField" editable="false" layoutX="70.0" layoutY="375.0" />
                                     <TextField fx:id="dislikesTextField" editable="false" layoutX="286.0" layoutY="375.0" />
+                                    <TextField fx:id="fichierTextField" editable="false" layoutX="70.0" layoutY="473.0" />
                                  </children></Pane>
                            </children>
                         </VBox>
@@ -80,7 +81,7 @@
                   </ScrollPane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7a73bf;">
                      <children>
-                        <Button layoutX="37.0" layoutY="64.0" mnemonicParsing="false" onAction="#editerPost" prefHeight="51.0" prefWidth="114.0" style="-fx-font-weight: bold; -fx-background-color: #dde7f0; -fx-background-radius: 10;" text="Edit" />
+                        <Button layoutX="37.0" layoutY="64.0" mnemonicParsing="false" onAction="#editPost" prefHeight="51.0" prefWidth="114.0" style="-fx-font-weight: bold; -fx-background-color: #dde7f0; -fx-background-radius: 10;" text="Edit" />
                         <Button layoutX="38.0" layoutY="136.0" mnemonicParsing="false" onAction="#supprimerPost" prefHeight="50.0" prefWidth="113.0" style="-fx-font-weight: bold; -fx-background-color: #dde7f0; -fx-background-radius: 10;" text="Delete" />
                      </children></Pane>
                </children>

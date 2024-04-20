@@ -2,7 +2,6 @@ package Controller;
 
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;

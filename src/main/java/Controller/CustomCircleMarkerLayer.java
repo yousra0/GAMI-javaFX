@@ -2,7 +2,6 @@ package Controller;
 
 import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
-
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -14,7 +13,7 @@ public class CustomCircleMarkerLayer extends MapLayer
     private final Circle circle;
     /**
      * @param mapPoint le point (latitude et longitude) où afficher le cercle
-     * @see com.gluonhq.maps.MapPoint
+     * @see MapPoint
      */
     public CustomCircleMarkerLayer(MapPoint mapPoint)
     {

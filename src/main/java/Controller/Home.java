@@ -14,17 +14,18 @@ public class Home extends Application
     {
         launch(args);
     }
+
     @Override
-    public void start(Stage primaryStage)
-    {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/addPost.fxml"));
+    public void start(Stage primaryStage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPost.fxml"));
         try
         {
-            Parent root=loader.load();
-            Scene scene=new Scene(root);
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             throw new RuntimeException(e);
         }

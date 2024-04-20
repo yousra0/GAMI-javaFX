@@ -3,26 +3,19 @@ package Controller;
 import Entity.Post;
 import Outil.DataBase;
 import Service.Post_s;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
+
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class EditerPost
 {
@@ -44,103 +37,80 @@ public class EditerPost
     @FXML
     private TextField titreTextField;
 
-
-
-
-    public void setTitre(String titre)
+    public EditerPost()
     {
-        titreTextField.setText(titre);
-    }
-    public void setContenu(String contenu)
-    {
-        contenuTextField.setText(contenu);
-    }
-    public void setDate(String date) {
-        dateTextField.setText(date);
-    }
-    public void setFichier(String fichier) {
-        fichierTextField.setText(fichier);
-    }
-    public void setLikes(int likes) {
-        likesTextField.setText(String.valueOf(likes));
-    }
-    public void setDislikes(int dislikes) {
-        dislikesTextField.setText(String.valueOf(dislikes));
-    }
-
-    @FXML
-    private void retournerAAfficherPost() {
-        Stage stage = (Stage) titreTextField.getScene().getWindow();
-        stage.close();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost.fxml"));
-        try {
-            Parent root = loader.load();
-            Stage afficherPostStage = new Stage();
-            afficherPostStage.setScene(new Scene(root));
-            afficherPostStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Connection conn = DataBase.getInstance().getConn();
+        postService = new Post_s(conn);
     }
     Connection conn= DataBase.getInstance().getConn() ;
     Post_s postService = new Post_s(conn);
+    private Post post;
+
     @FXML
-    void enregistrer(ActionEvent event)
+    void initialize()
     {
-        LocalDate date = dateTextField.getValue();
-
-        if (date != null)
-        {
-            String dateStr = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-            String titre = titreTextField.getText();
-            String contenu = contenuTextField.getText();
-            String fichier = fichierTextField.getText();
-            int likes = 0;
-            int dislikes = 0;
-            try {
-                likes = Integer.parseInt(likesTextField.getText());
-                dislikes = Integer.parseInt(dislikesTextField.getText());
-            } catch (NumberFormatException e) {
-                afficherErreur("Veuillez saisir des valeurs numériques pour les champs likes et dislikes.");
-                return;
+        // Charger le post à éditer en fonction de son titre
+        String titre = "Titre du post à éditer"; // Remplacez par le titre du post à éditer
+        try {
+            Post post = postService.getPostByTitre(titre);
+            if (post != null) {
+                // Afficher les valeurs du post dans les champs de texte
+                titreTextField.setText(post.getTitre());
+                contenuTextField.setText(post.getContenu_pub());
+                dateTextField.setValue(LocalDate.parse(post.getDate_pub()));
+                fichierTextField.setText(post.getFile());
+                likesTextField.setText(String.valueOf(post.getLikes()));
+                dislikesTextField.setText(String.valueOf(post.getDislikes()));
+                this.post = post;
+            } else {
+                afficherErreur("Le post avec le titre \"" + titre + "\" n'a pas été trouvé.");
             }
-
-            Post post = new Post();
-            post.setTitre(titre);
-            post.setContenu_pub(contenu);
-            post.setDate_pub(dateStr);
-            post.setFile(fichier);
-            post.setLikes(likes);
-            post.setDislikes(dislikes);
-
-            try {
-                postService.editByTitre(post);
-                afficherInformation("Les modifications ont été enregistrées avec succès.");
-                Stage stage = (Stage) titreTextField.getScene().getWindow();
-                stage.close();
-            } catch (SQLException e) {
-                afficherErreur("Une erreur s'est produite lors de l'enregistrement des modifications : " + e.getMessage());
-            }
-        } else {
-            afficherErreur("Veuillez sélectionner une date.");
+        } catch (SQLException e) {
+            afficherErreur("Une erreur s'est produite lors de la récupération du post : " + e.getMessage());
         }
     }
 
+    @FXML
+    void enregistrer(ActionEvent event)
+    {
+        // Récupérer les nouvelles valeurs des champs
+        String titre = titreTextField.getText();
+        String contenu = contenuTextField.getText();
+        String date = dateTextField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")); // Assurez-vous que la date est bien formatée
+        String fichier = fichierTextField.getText();
+        int likes = Integer.parseInt(likesTextField.getText());
+        int dislikes = Integer.parseInt(dislikesTextField.getText());
 
-
-
-
-    private void afficherErreur(String message) {
+        // Mettre à jour le post avec les nouvelles valeurs
+        post.setTitre(titre);
+        post.setContenu_pub(contenu);
+        post.setDate_pub(date);
+        post.setFile(fichier);
+        post.setLikes(likes);
+        post.setDislikes(dislikes);
+        try {
+            // Mettre à jour le post dans la base de données
+            postService.edit(post);
+            afficherInformation("Le post a été modifié avec succès.");
+        } catch (SQLException e) {
+            afficherErreur("Une erreur s'est produite lors de la modification du post : " + e.getMessage());
+        }
+    }
+    private void afficherErreur(String message)
+    {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);
         alert.show();
     }
 
-    private void afficherInformation(String message) {
+    private void afficherInformation(String message)
+    {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(message);
         alert.show();
+    }
+
+    public void retournerAAfficherPost(ActionEvent actionEvent) {
+        // Code pour revenir à la vue AfficherPost
     }
 }
