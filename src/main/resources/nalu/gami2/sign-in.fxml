@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.SignInController">
+   <right>
+      <AnchorPane prefHeight="500.0" prefWidth="450.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="emailField" layoutX="101.0" layoutY="202.0" promptText="Email adress" style="-fx-background-color: transparent; -fx-border-color: #273b40; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="passwordField" layoutX="101.0" layoutY="255.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #273b40; -fx-border-width: 0px 0px 2px 0px;" />
+            <FontAwesomeIcon fill="#273b40" glyphName="USER" layoutX="64.0" layoutY="226.0" size="20" />
+            <FontAwesomeIcon fill="#273b40" glyphName="KEY" layoutX="63.0" layoutY="279.0" size="20" />
+            <Button fx:id="signInButton" layoutX="135.0" layoutY="327.0" mnemonicParsing="false" onAction="#signin" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #273b40;" text="Login" textFill="WHITE" />
+            <FontAwesomeIcon fill="#273b40" glyphName="USERS" layoutX="154.0" layoutY="120.0" size="40" />
+            <Text layoutX="121.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+         <TextArea fx:id="terminalMessages" editable="false" layoutX="101.0" layoutY="370.0" prefHeight="100.0" prefWidth="248.0" style="-fx-border-color: #273b40; -fx-border-width: 2; -fx-border-radius: 5;                  -fx-background-color: #2b2b2b; -fx-text-fill: #dcdcdc;                  -fx-font-family: 'Consolas'; -fx-font-size: 12pt;                  -fx-padding: 10;" wrapText="true">
+         </TextArea>
+
+      </AnchorPane>
+   </right>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #273b40;" BorderPane.alignment="CENTER">
+         <children>
+            <FontAwesomeIcon glyphName="GAMEPAD" layoutX="143.0" layoutY="223.0" size="60">
+               <fill>
+                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.04146341463414634">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.05567251518368721" green="0.5127836465835571" blue="0.5368421077728271" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </FontAwesomeIcon>
+            <Text layoutX="110.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAMI">
+               <font>
+                  <Font name="Calibri Italic" size="56.0" />
+               </font>
+               <fill>
+                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.04146341463414634">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.05567251518368721" green="0.5127836465835571" blue="0.5368421077728271" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="437.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.UsersViewController">
+    <TableView fx:id="usersTable">
+        <columns>
+            <TableColumn fx:id="colRoles" text="Roles">
+                <cellValueFactory>
+                    <PropertyValueFactory property="roles" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colId" text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colEmail" text="Email">
+                <cellValueFactory>
+                    <PropertyValueFactory property="email" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colNom" text="Nom">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nom" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colPrenom" text="Prénom">
+                <cellValueFactory>
+                    <PropertyValueFactory property="prenom" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colPays" text="Pays">
+                <cellValueFactory>
+                    <PropertyValueFactory property="pays" />
+                </cellValueFactory>
+            </TableColumn>
+            <!-- Add other columns as needed -->
+        </columns>
+    </TableView>
+    <Button alignment="BOTTOM_CENTER" onAction="#deleteUser" prefHeight="26.0" prefWidth="218.0" text="Supprimer utilisateur" />
+</VBox>
