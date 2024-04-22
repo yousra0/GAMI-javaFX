@@ -7,43 +7,44 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="598.0" prefWidth="516.0" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="nalu.gami2.UserProfileController">
+<VBox alignment="CENTER" prefHeight="598.0" prefWidth="516.0" spacing="10" style="-fx-background-color: #0e8389;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.UserProfileController">
     <ImageView fx:id="profileImageView" fitHeight="124.0" fitWidth="146.0" preserveRatio="true" />
 
-    <Label text="Nom" style="-fx-font-weight: bold;">
-        <font>
-            <Font name="Arial Rounded MT Bold" size="12.0" />
-        </font>
+    <Label style="-fx-font-weight: bold;" text="Nom" textFill="#d9cabc">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
     </Label>
     <TextField fx:id="nameField" alignment="CENTER" />
 
-    <Label text="Prénom" style="-fx-font-weight: bold;">
-        <font>
-            <Font name="Arial Rounded MT Bold" size="12.0" />
-        </font>
+    <Label style="-fx-font-weight: bold;" text="Prénom" textFill="#d9cabc">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
     </Label>
     <TextField fx:id="prenomField" alignment="CENTER" />
 
-    <Label text="Email" style="-fx-font-weight: bold;">
-        <font>
-            <Font name="Arial Rounded MT Bold" size="12.0" />
-        </font>
+    <Label style="-fx-font-weight: bold;" text="Email" textFill="#d9cabc">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
     </Label>
     <TextField fx:id="emailField" alignment="CENTER" />
 
-    <Label text="Date de Naissance" style="-fx-font-weight: bold;">
-        <font>
-            <Font name="Arial Rounded MT Bold" size="12.0" />
-        </font>
+    <Label style="-fx-font-weight: bold;" text="Date de Naissance" textFill="#d9cabc">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
     </Label>
     <TextField fx:id="datenaiField" alignment="CENTER" />
 
-    <Label text="Pays" style="-fx-font-weight: bold;">
-        <font>
-            <Font name="Arial Rounded MT Bold" size="12.0" />
-        </font>
+    <Label style="-fx-font-weight: bold;" text="Pays" textFill="#d9cabc">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
     </Label>
     <TextField fx:id="paysField" alignment="CENTER" />
 
     <Button fx:id="editButton" onAction="#handleEditAction" text="Modifier" />
+   <Button mnemonicParsing="false" onAction="#logout" text="Se déconnecter" />
 </VBox>

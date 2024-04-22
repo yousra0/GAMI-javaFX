@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="488.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.UsersViewController">
-    <TableView fx:id="usersTable" prefHeight="400.0" prefWidth="565.0">
+<AnchorPane prefHeight="488.0" prefWidth="568.0" style="-fx-background-color: #273b40;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.UsersViewController">
+    <TableView fx:id="usersTable" layoutX="-1.0" layoutY="84.0" prefHeight="302.0" prefWidth="566.0">
         <columns>
             <TableColumn fx:id="colRoles" text="Roles">
                 <cellValueFactory>
@@ -43,7 +45,20 @@
             <!-- Add other columns as needed -->
         </columns>
     </TableView>
-    <Button alignment="BOTTOM_CENTER" layoutX="37.0" layoutY="415.0" onAction="#deleteUser" prefHeight="26.0" prefWidth="218.0" text="Supprimer utilisateur" />
-   <Label layoutX="37.0" layoutY="457.0" text="Sommes des utilisateurs :" />
-   <Label fx:id="NbrUsers" layoutX="184.0" layoutY="457.0" text="Label" />
+    <Button alignment="BOTTOM_CENTER" layoutX="173.0" layoutY="399.0" onAction="#deleteUser" prefHeight="26.0" prefWidth="218.0" text="Supprimer utilisateur" />
+   <Label layoutX="14.0" layoutY="443.0" text="Sommes des utilisateurs :" textFill="#fcfcfc">
+      <font>
+         <Font name="System Bold" size="17.0" />
+      </font></Label>
+   <Label fx:id="NbrUsers" layoutX="244.0" layoutY="443.0" text="Label" textFill="#f7f17a">
+      <font>
+         <Font size="17.0" />
+      </font></Label>
+   <Button layoutX="457.0" layoutY="443.0" mnemonicParsing="false" onAction="#logout" text="se déconnecter" />
+   <Label layoutX="14.0" layoutY="27.0" text="Bienvenue à la page d'admin" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Label>
+   <FontAwesomeIcon fill="#d3d962" glyphName="USER" layoutX="349.0" layoutY="57.0" selectionFill="#ffffff00" size="40" />
 </AnchorPane>

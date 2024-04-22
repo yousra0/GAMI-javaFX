@@ -59,6 +59,22 @@
                      </stops>
                   </RadialGradient>
                </fill>
+               <selectionFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </selectionFill>
             </FontAwesomeIcon>
             <Text layoutX="110.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAMI">
                <font>
@@ -79,7 +95,7 @@
                         </Stop>
                         <Stop offset="1.0">
                            <color>
-                              <Color red="0.05567251518368721" green="0.5127836465835571" blue="0.5368421077728271" />
+                              <Color red="0.054901961237192154" green="0.5137255191802979" blue="0.5372549295425415" />
                            </color>
                         </Stop>
                      </stops>

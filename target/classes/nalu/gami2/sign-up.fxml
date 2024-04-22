@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.SignUpController">
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.SignUpController">
     <padding>
         <Insets bottom="10" left="25" right="25" top="25" />
     </padding>
@@ -18,7 +18,7 @@
     <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label text="Mot de passe :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
     <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
     <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
@@ -32,12 +32,12 @@
 
     <Label text="Date de Naissance (AAAA-MM-JJ):" GridPane.columnIndex="0" GridPane.rowIndex="5" />
 
-    <Label text="Profil Photo :" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <Label text="Photo de profile  :" GridPane.columnIndex="0" GridPane.rowIndex="6" />
 
     <!-- Buttons -->
-    <Button onAction="#handleSignUp" text="Sign Up" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-    <Button onAction="#handleGoToSignIn" text="Already have an account? Sign in" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-   <Button mnemonicParsing="false" onAction="#chooseFile" text="Select an image" GridPane.columnIndex="1" GridPane.rowIndex="6">
+    <Button onAction="#handleSignUp" text="S'inscrire" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+    <Button onAction="#handleGoToSignIn" text="Déjà j'ai un compte , connexion !" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+   <Button mnemonicParsing="false" onAction="#chooseFile" text="choisir une image " GridPane.columnIndex="1" GridPane.rowIndex="6">
       <GridPane.margin>
          <Insets />
       </GridPane.margin>
