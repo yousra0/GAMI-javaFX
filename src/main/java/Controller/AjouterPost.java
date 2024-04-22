@@ -3,7 +3,6 @@ package Controller;
 import Entity.Post;
 import Outil.DataBase;
 import Service.Post_s;
-import io.github.palexdev.materialfx.controls.MFXDatePicker;
 
 import javafx.event.ActionEvent;
 
@@ -33,7 +32,6 @@ import java.time.format.DateTimeFormatter;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-
 public class AjouterPost
 {
     @FXML
@@ -41,9 +39,6 @@ public class AjouterPost
 
     @FXML
     private TextField contenuTextField;
-
-    @FXML
-    private MFXDatePicker dateTextField;
 
     @FXML
     private TextField fichierTextField;
@@ -56,9 +51,9 @@ public class AjouterPost
 
     @FXML
     private ImageView imageviewFile;
-
     Connection conn= DataBase.getInstance().getConn() ;
     Post_s postService = new Post_s(conn);
+
     @FXML
     void ajouterPost(ActionEvent event)
     {
@@ -66,21 +61,12 @@ public class AjouterPost
         if (titreTextField.getText().length() < 2 || titreTextField.getText().length() > 20 ||
                 contenuTextField.getText().length() < 2 || contenuTextField.getText().length() > 350)
         {
-            afficherErreur("La taille du titre et du contenu doit être entre 2 et 10 caractères.");
+            afficherErreur("La taille du titre doit être entre 2 et 20 caractères et du contenu doit être entre 2 et 350 caractères.");
             return;
         }
 
         // Vérifier si les champs obligatoires sont remplis
-        if (titreTextField.getText().isEmpty() || contenuTextField.getText().isEmpty() || dateTextField.getValue() == null)
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Veuillez remplir tous les champs obligatoires.");
-            alert.show();
-            return;
-        }
-
-        // Vérifier si les champs obligatoires sont remplis
-        if (titreTextField.getText().isEmpty() || contenuTextField.getText().isEmpty() || dateTextField.getValue() == null)
+        if (titreTextField.getText().isEmpty() || contenuTextField.getText().isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Veuillez remplir tous les champs obligatoires.");
@@ -102,7 +88,7 @@ public class AjouterPost
         }
 
         // Vérifier si les nombres de likes et dislikes sont positifs
-        if (likes < 0 || dislikes < 0)
+        if (likes <= 0 || dislikes <= 0)
         {
             afficherErreur("Les nombres de likes et dislikes doivent être positifs.");
             return;
@@ -118,11 +104,12 @@ public class AjouterPost
             return;
         }
 
-        LocalDate selectedDate = dateTextField.getValue();
+        // Récupérer la date actuelle du système
+        LocalDate currentDate = LocalDate.now();
 
         // Format the selected date into a string
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String dateString = selectedDate.format(formatter);
+        String dateString = currentDate.format(formatter);
 
         Post post = new Post(titreTextField.getText(), contenuTextField.getText(), dateString, fichierTextField.getText(), Integer.parseInt(likesTextField.getText()), Integer.parseInt(dislikesTextField.getText()));
 
@@ -154,7 +141,6 @@ public class AjouterPost
             {
                 throw new RuntimeException(e);
             }
-
         }
         catch (SQLException e)
         {
@@ -162,7 +148,6 @@ public class AjouterPost
             alert.setContentText(e.getMessage());
             alert.show();
         }
-
     }
     private void afficherErreur(String message)
     {
@@ -170,7 +155,6 @@ public class AjouterPost
         alert.setContentText(message);
         alert.show();
     }
-
     @FXML
     private void choisirImage()
     {
@@ -184,7 +168,6 @@ public class AjouterPost
             fichierTextField.setText(file.getAbsolutePath());
         }
     }
-
     @FXML
     private void navigateToMusicPlayer(ActionEvent event)
     {

@@ -1,15 +1,17 @@
 package Service;
 
 import Entity.Comment;
+import Entity.Post;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comment_s implements Services <Comment>
 {
     Connection cnx;
-
+    private PreparedStatement pst;
     public Comment_s()
     {}
     public Comment_s(Connection cnx)
@@ -74,5 +76,52 @@ public class Comment_s implements Services <Comment>
             System.out.println("Error while editing post: " + e.getMessage());
             throw e;
         }
+    }
+    public List<Comment> getAllCommentairesByPostId(int postId)
+    {
+        List<Comment> comments = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM comment WHERE post_id = ?";
+            PreparedStatement ps = this.cnx.prepareStatement(sql);
+            ps.setInt(1, postId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String contenu_comment = rs.getString("contenu_comment");
+                String date_comment = rs.getString("date_comment");
+                Post post = getPostById(postId);
+                Comment c = new Comment(id, contenu_comment, date_comment, post);
+                comments.add(c);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException var15) {
+            var15.printStackTrace();
+        }
+        return comments;
+    }
+    private Post getPostById(int id)
+    {
+        Post post = null;
+        try {
+            String sql = "SELECT * FROM post WHERE id = ?";
+            PreparedStatement ps = this.cnx.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String titre = rs.getString("titre");
+                String contenu_pub = rs.getString("contenu_pub");
+                String date_pub = rs.getString("date_pub");
+                String file = rs.getString("file");
+                int likes = rs.getInt("likes");
+                int dislikes = rs.getInt("dislikes");
+                post = new Post(id, titre, contenu_pub, date_pub, file, likes, dislikes);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException var16) {
+            var16.printStackTrace();
+        }
+        return post;
     }
 }

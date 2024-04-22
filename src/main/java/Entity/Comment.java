@@ -1,10 +1,14 @@
 package Entity;
+import Entity.Post;
+
 
 public class Comment
 {
     private int id;
     private int post_id;
+    private Post post;
     private String contenu_comment;
+    private String date_comment;
 
     public Comment(String contenu_comment)
     {
@@ -24,7 +28,14 @@ public class Comment
         this.post_id = post_id;
         this.contenu_comment = contenu_comment;
     }
+    public Comment(int id, String contenu_comment , String date_comment, Post post)
+    {
+        this.id = id;
+        this.contenu_comment = contenu_comment;
+        this.date_comment = date_comment;
+        this.post = post;
 
+    }
     public int getId() {
         return id;
     }

@@ -1,5 +1,7 @@
 package Entity;
 
+import Service.Comment_s;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,7 @@ public class Post
     private int likes;
     private int dislikes;
 
-    public List<Comment> getComments()
-    {
+    public List<Comment> getComments() {
         return comments;
     }
     private List<Comment> comments = new ArrayList<>();
@@ -33,6 +34,17 @@ public class Post
         this.dislikes = dislikes;
         this.comments = new ArrayList<>();
     }
+    public Post(int id, String titre, String contenu_pub, String date_pub, String file, int likes, int dislikes) {
+        this.id = id;
+        this.titre = titre;
+        this.contenu_pub = contenu_pub;
+        this.date_pub = date_pub;
+        this.file = file;
+        this.likes = likes;
+        this.dislikes = dislikes;
+        this.comments = new ArrayList<>();
+    }
+
     public int getId() {
         return id;
     }

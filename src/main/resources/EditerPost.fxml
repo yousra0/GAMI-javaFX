@@ -3,17 +3,21 @@
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditerPost">
    <children>
-      <TextField fx:id="titreTextField" layoutX="226.0" layoutY="55.0" />
-      <TextField fx:id="contenuTextField" layoutX="226.0" layoutY="107.0" />
-      <MFXDatePicker fx:id="dateTextField" layoutX="212.0" layoutY="146.0" />
-      <TextField fx:id="fichierTextField" layoutX="228.0" layoutY="200.0" />
-      <TextField fx:id="likesTextField" layoutX="227.0" layoutY="245.0" />
-      <TextField fx:id="dislikesTextField" layoutX="226.0" layoutY="289.0" />
+      <TextField fx:id="titreTextField" layoutX="25.0" layoutY="32.0" />
+      <TextField fx:id="contenuTextField" layoutX="25.0" layoutY="84.0" />
+      <MFXDatePicker fx:id="dateTextField" layoutX="429.0" layoutY="77.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="fichierTextField" layoutX="226.0" layoutY="32.0" />
+      <TextField fx:id="likesTextField" layoutX="225.0" layoutY="84.0" />
+      <TextField fx:id="dislikesTextField" layoutX="430.0" layoutY="32.0" />
+      <ImageView fx:id="imageviewFile" fitHeight="187.0" fitWidth="343.0" layoutX="47.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="505.0" layoutY="344.0" mnemonicParsing="false" onAction="#retournerAAfficherPost" text="Back" />
       <Button layoutX="505.0" layoutY="302.0" mnemonicParsing="false" onAction="#enregistrer" text="Save" />
+      <Button fx:id="chargerImageButton" layoutX="478.0" layoutY="247.0" mnemonicParsing="false" onAction="#chargerImage" text="Charger Image" />
+
    </children>
 </AnchorPane>
