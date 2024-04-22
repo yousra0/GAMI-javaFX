@@ -1,20 +1,23 @@
 package nalu.gami2;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.Alert;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import entity.user;
 import javafx.scene.control.cell.PropertyValueFactory;
 import outil.database;
 import service.user_s;
+
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class UsersViewController {
+public class UsersViewController implements Initializable {
+
+    int number;
 
     @FXML
     private TableView<user> usersTable;
@@ -37,6 +40,9 @@ public class UsersViewController {
     @FXML
     private TableColumn<user, String> colRoles;
 
+    @FXML
+    private Label NbrUsers;
+
     // Ajoutez des TableColumn pour d'autres propriétés si nécessaire
 
     private user_s userService;
@@ -45,6 +51,11 @@ public class UsersViewController {
         userService = new user_s(database.getInstance().getConn());
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadUsers();
+        NbrUsers.setText(String.valueOf(number));
+    }
 
     @FXML
     public void initialize() {
@@ -65,6 +76,7 @@ public class UsersViewController {
         try {
             List<user> userList = userService.show();
             System.out.println("Nombre d'utilisateurs chargés : " + userList.size()); // Ajout pour le débogage
+            number = userList.size();
             usersTable.getItems().setAll(userList);
         } catch (SQLException e) {
             e.printStackTrace(); // Changez ceci pour imprimer la pile d'exceptions
@@ -106,6 +118,7 @@ public class UsersViewController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
 
 
 }

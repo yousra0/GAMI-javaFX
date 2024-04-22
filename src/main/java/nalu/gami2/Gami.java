@@ -52,19 +52,6 @@ public class Gami extends Application {
         }
     }
 
-
-    public static void showForgetPasswordView() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Gami.class.getResource("ForgetPassword.fxml"));
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-            primaryStage.setTitle("Réinitialisation du mot de passe");
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public static void main(String[] args) {
         launch(args);
     }

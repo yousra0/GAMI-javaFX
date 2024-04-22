@@ -9,6 +9,12 @@ public class user {
     private String nom ;
 
     private byte is_verified,is_banned	;
+    private String prenom ;
+    private String pays ;
+    private String datenai ;
+    private String pprofile ;
+    public user (){
+    }
 
 
     public user(int id, String email, String password, String roles, String nom, String prenom, String pays, String datenai, String pprofile) {
@@ -121,11 +127,6 @@ public class user {
     
 
 
-    private String prenom ;
-    private String pays ;
-    private String datenai ;
-    private String pprofile ;
-    public user (){
-    }
+
 }
 

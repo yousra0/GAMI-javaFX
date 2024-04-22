@@ -1,14 +1,14 @@
 package nalu.gami2;
 import entity.user;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import service.user_s;
+
+import java.io.IOException;
 
 public class SignInController {
     @FXML
@@ -20,10 +20,34 @@ public class SignInController {
     @FXML
     public Button signInButton;
 
-    // Ajoutez un TextArea pour les messages du terminal
-    @FXML
-    public TextArea terminalMessages;
 
+    @FXML
+    public void goToForgot(){
+        try {
+            Stage stage = (Stage) passwordField.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forgotPassword.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void goToSignUp(){
+        try {
+            Stage stage = (Stage) passwordField.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-up.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void signin() {
@@ -33,7 +57,6 @@ public class SignInController {
             user_s userService = new user_s(outil.database.getInstance().getConn());
             try {
                 if (userService.signIn(email, password)) {
-                    terminalMessages.appendText("Connexion réussie !\n");
                     user currentUser = userService.getUserByEmail(email);
                     SessionManager.setCurrentUser(currentUser);
                     // Vérifiez si l'utilisateur connecté est l'admin pour charger la vue appropriée.
@@ -43,11 +66,18 @@ public class SignInController {
                         loadUserProfileView(); // Chargez la vue de profil pour les utilisateurs normaux.
                     }
                 } else {
-                    terminalMessages.appendText("Échec de la connexion. E-mail ou mot de passe incorrect.\n");
-                }
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Échec de la connexion. E-mail ou mot de passe incorrect.");
+                    alert.showAndWait();                }
             } catch (Exception e) {
-                terminalMessages.appendText("Une erreur s'est produite : " + e.getMessage() + "\n");
-                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Une erreur s'est produite : " + e.getMessage());
+                alert.showAndWait();
+                e.printStackTrace();                e.printStackTrace();
             }
         });
     }

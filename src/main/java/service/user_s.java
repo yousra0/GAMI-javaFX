@@ -75,6 +75,23 @@ public class user_s implements service <user>  {
             throw e; // Rethrow the exception to handle it in the caller
         }
     }
+    public int ChercherMail(String email) {
+
+        try {
+            String req = "SELECT * from `user` WHERE `user`.`email` ='" + email + "'  ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                if (rs.getString("email").equals(email)) {
+                    System.out.println("mail trouvé ! ");
+                    return 1;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return -1;
+    }
 
 
     @Override
@@ -194,6 +211,23 @@ public class user_s implements service <user>  {
             }
         }
         return null;
+    }
+
+    public void ResetPaswword(String email, String password) {
+        try {
+
+            String req = "UPDATE user SET password = ? WHERE email = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+
+            ps.setString(1, password);
+            ps.setString(2, email);
+
+            ps.executeUpdate();
+            System.out.println("Password updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
 
