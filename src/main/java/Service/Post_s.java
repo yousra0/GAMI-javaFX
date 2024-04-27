@@ -24,7 +24,7 @@ public class Post_s implements Services <Post>
             PreparedStatement pstm = cnx.prepareStatement(qry);
             pstm.setString(1,p.getTitre());
             pstm.setString(2,p.getContenu_pub());
-            pstm.setString(3,p.getDate_pub());
+            pstm.setDate(3, new java.sql.Date(p.getDate_pub().getTime()));
             pstm.setString(4,p.getFile());
             pstm.setInt(5,p.getLikes());
             pstm.setInt(6,p.getDislikes());
@@ -46,7 +46,7 @@ public class Post_s implements Services <Post>
                 p.setId(rs.getInt("id"));
                 p.setTitre(rs.getString("titre"));
                 p.setContenu_pub(rs.getString("contenu_pub"));
-                p.setDate_pub(rs.getString("date_pub"));
+                p.setDate_pub(new Date(rs.getDate("date_pub").getTime())); // Convertir la date SQL en java.util.Date
                 p.setFile(rs.getString("file"));
                 p.setLikes(rs.getInt("likes"));
                 p.setDislikes(rs.getInt("dislikes"));
@@ -80,7 +80,7 @@ public class Post_s implements Services <Post>
         {
             pstm.setString(1, p.getTitre());
             pstm.setString(2, p.getContenu_pub());
-            pstm.setString(3, p.getDate_pub());
+            pstm.setDate(3, new java.sql.Date(p.getDate_pub().getTime()));
             pstm.setString(4, p.getFile());
             pstm.setInt(5, p.getLikes());
             pstm.setInt(6, p.getDislikes());
@@ -112,7 +112,8 @@ public class Post_s implements Services <Post>
                 String file = rs.getString("file");
                 int likes = rs.getInt("likes");
                 int dislikes = rs.getInt("dislikes");
-                Post p = new Post(titre, contenu_pub, date_pub, file, likes, dislikes); // Correction de la création de l'objet Post
+                Post p = new Post(titre, contenu_pub, new java.util.Date(), file, likes, dislikes);
+                // Correction de la création de l'objet Post
                 posts.add(p);
             }
             rs.close();
@@ -199,7 +200,7 @@ public class Post_s implements Services <Post>
                     p.setId(rs.getInt("id"));
                     p.setTitre(rs.getString("titre"));
                     p.setContenu_pub(rs.getString("contenu_pub"));
-                    p.setDate_pub(rs.getString("date_pub"));
+                    p.setDate_pub(new Date(rs.getDate("date_pub").getTime())); // Convertir la date SQL en java.util.Date
                     p.setFile(rs.getString("file"));
                     p.setLikes(rs.getInt("likes"));
                     p.setDislikes(rs.getInt("dislikes"));
@@ -233,7 +234,7 @@ public class Post_s implements Services <Post>
                     post.setId(resultSet.getInt("id"));
                     post.setTitre(resultSet.getString("titre"));
                     post.setContenu_pub(resultSet.getString("contenu_pub"));
-                    post.setDate_pub(resultSet.getString("date_pub"));
+                    post.setDate_pub(new Date(resultSet.getDate("date_pub").getTime())); // Convertir la date SQL en java.util.Date
                     post.setFile(resultSet.getString("file"));
                     post.setLikes(resultSet.getInt("likes"));
                     post.setDislikes(resultSet.getInt("dislikes"));

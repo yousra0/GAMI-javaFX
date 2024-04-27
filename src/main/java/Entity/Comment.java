@@ -1,7 +1,6 @@
 package Entity;
 import Entity.Post;
 
-
 public class Comment
 {
     private int id;

@@ -6,6 +6,9 @@ import Service.Post_s;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -16,12 +19,14 @@ public class Main {
         try {
             Connection cnx = d.getConn(); // Obtenir la connexion à la base de données
             postService = new Post_s(cnx);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             // Créer un post avec des valeurs fictives
             Post post = new Post();
             post.setTitre("titre");
             post.setContenu_pub("Contenu");
-            post.setDate_pub("2024-03-29");
+            Date datePub = dateFormat.parse("2024-03-29");
+            post.setDate_pub(datePub);
             post.setFile("Chemin/vers/fichier");
             post.setLikes(1);
             post.setDislikes(0);
@@ -56,9 +61,8 @@ public class Main {
             postService.edit(secondPost);
             System.out.println("Deuxième post modifié avec succès !");
 
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
         }
-
     }
 }

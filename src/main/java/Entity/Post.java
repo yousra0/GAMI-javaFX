@@ -3,6 +3,7 @@ package Entity;
 import Service.Comment_s;
 
 import java.util.ArrayList;
+import java.util.Date; // Ajout de l'import pour java.util.Date
 import java.util.List;
 
 public class Post
@@ -10,7 +11,7 @@ public class Post
     private int id;
     private String titre;
     private String contenu_pub;
-    private String date_pub;
+    private Date date_pub; // Modification du type de la propriété date_pub
     private String file;
     private int likes;
     private int dislikes;
@@ -25,7 +26,7 @@ public class Post
     }
 
     public Post(){};
-    public Post(String titre, String contenu_pub, String date_pub, String file, int likes, int dislikes) {
+    public Post(String titre, String contenu_pub, Date date_pub, String file, int likes, int dislikes) {
         this.titre = titre;
         this.contenu_pub = contenu_pub;
         this.date_pub = date_pub;
@@ -34,7 +35,7 @@ public class Post
         this.dislikes = dislikes;
         this.comments = new ArrayList<>();
     }
-    public Post(int id, String titre, String contenu_pub, String date_pub, String file, int likes, int dislikes) {
+    public Post(int id, String titre, String contenu_pub, Date date_pub, String file, int likes, int dislikes) {
         this.id = id;
         this.titre = titre;
         this.contenu_pub = contenu_pub;
@@ -69,11 +70,11 @@ public class Post
         this.contenu_pub = contenu_pub;
     }
 
-    public String getDate_pub() {
+    public Date getDate_pub() {
         return date_pub;
     }
 
-    public void setDate_pub(String date_pub) {
+    public void setDate_pub(Date date_pub) {
         this.date_pub = date_pub;
     }
 
@@ -112,6 +113,7 @@ public class Post
                 ", file='" + file + '\'' +
                 ", likes=" + likes +
                 ", dislikes=" + dislikes +
+                ", comments=" + comments +
                 '}';
     }
 }

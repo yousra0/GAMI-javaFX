@@ -24,8 +24,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -104,14 +106,11 @@ public class AjouterPost
             return;
         }
 
-        // Récupérer la date actuelle du système
         LocalDate currentDate = LocalDate.now();
+        Date date = java.sql.Date.valueOf(currentDate);
 
-        // Format the selected date into a string
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String dateString = currentDate.format(formatter);
 
-        Post post = new Post(titreTextField.getText(), contenuTextField.getText(), dateString, fichierTextField.getText(), Integer.parseInt(likesTextField.getText()), Integer.parseInt(dislikesTextField.getText()));
+        Post post = new Post(titreTextField.getText(), contenuTextField.getText(), date, fichierTextField.getText(), Integer.parseInt(likesTextField.getText()), Integer.parseInt(dislikesTextField.getText()));
 
         try
         {
@@ -129,7 +128,7 @@ public class AjouterPost
                 AfficherPost afficherPost = loader.getController();
                 afficherPost.setTitreTextField(titreTextField.getText());
                 afficherPost.setContenuTextField(contenuTextField.getText());
-                afficherPost.setDateTextField(dateString);
+                afficherPost.setDateTextField(date.toString());
                 afficherPost.setFichierTextField(fichierTextField.getText());
                 afficherPost.setLikesTextField(Integer.parseInt(likesTextField.getText()));
                 afficherPost.setDislikesTextField(Integer.parseInt(dislikesTextField.getText()));

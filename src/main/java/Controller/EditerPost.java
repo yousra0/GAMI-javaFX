@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 
 public class EditerPost
@@ -84,7 +85,7 @@ public class EditerPost
         this.post = post;
         this.titreTextField.setText(post.getTitre());
         this.contenuTextField.setText(post.getContenu_pub());
-        this.dateTextField.setText(post.getDate_pub());
+        this.dateTextField.setText(post.getDate_pub().toString());
         this.fichierTextField.setText(post.getFile());
         this.likesTextField.setText(String.valueOf(post.getLikes()));
         this.dislikesTextField.setText(String.valueOf(post.getDislikes()));
@@ -94,10 +95,13 @@ public class EditerPost
         // Récupérer les nouvelles valeurs des champs
         String newTitre = titreTextField.getText();
         String newContenu = contenuTextField.getText();
-        String newDate = dateTextField.getText();
         String newFile = fichierTextField.getText();
         int newLikes = Integer.parseInt(likesTextField.getText());
         int newDislikes = Integer.parseInt(dislikesTextField.getText());
+
+        // Récupérer la date actuelle
+        java.util.Date currentDate = new java.util.Date();
+        Date newDate = new Date(currentDate.getTime());
 
         // Créer un nouvel objet Post avec les nouvelles valeurs
         Post updatedPost = new Post();

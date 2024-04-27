@@ -111,7 +111,7 @@ public class Comment_s implements Services <Comment>
             if (rs.next()) {
                 String titre = rs.getString("titre");
                 String contenu_pub = rs.getString("contenu_pub");
-                String date_pub = rs.getString("date_pub");
+                Date date_pub = rs.getDate("date_pub");
                 String file = rs.getString("file");
                 int likes = rs.getInt("likes");
                 int dislikes = rs.getInt("dislikes");

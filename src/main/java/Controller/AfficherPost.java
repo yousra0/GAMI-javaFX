@@ -414,7 +414,7 @@ public class AfficherPost
                     Post selectedPost = postService.getByTitre(titre);
                     setTitreTextField(selectedPost.getTitre());
                     setContenuTextField(selectedPost.getContenu_pub());
-                    setDateTextField(selectedPost.getDate_pub());
+                    setDateTextField(selectedPost.getDate_pub().toString()); // Adaptation pour afficher la date
                     setFichierTextField(selectedPost.getFile());
                     setLikesTextField(selectedPost.getLikes());
                     setDislikesTextField(selectedPost.getDislikes());
@@ -460,7 +460,7 @@ public class AfficherPost
                 Post selectedPost = postService.getByTitre(titre);
                 setTitreTextField(selectedPost.getTitre());
                 setContenuTextField(selectedPost.getContenu_pub());
-                setDateTextField(selectedPost.getDate_pub());
+                setDateTextField(selectedPost.getDate_pub().toString()); // Adaptation pour afficher la date
                 setFichierTextField(selectedPost.getFile());
                 setLikesTextField(selectedPost.getLikes());
                 setDislikesTextField(selectedPost.getDislikes());
