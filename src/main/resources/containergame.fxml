@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="506.0" prefWidth="335.0" style="-fx-background-color: #d9cef2;" stylesheets="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Containergame">
+<VBox alignment="CENTER" prefHeight="506.0" prefWidth="335.0" style="-fx-background-color: #d9cef2;" stylesheets="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Containergame" >
    <children>
       <Label prefHeight="44.0" prefWidth="178.0" text="Most Rated" textFill="#726b6b">
          <font>

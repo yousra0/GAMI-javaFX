@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CategorieJeux_s implements Services<CategorieJeux> {
 
   Connection cnx;
@@ -22,7 +23,7 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
     @Override
     public void add(CategorieJeux c) throws SQLException
     {
-        String qry="INSERT INTO `categorie`(`id`, `name`, `description`) VALUES (?,?,?)";
+        String qry="INSERT INTO `categorie`( `name`, `description`) VALUES (?,?)";
         try
         {
             PreparedStatement pstm = cnx.prepareStatement(qry);
@@ -35,6 +36,7 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
             System.out.println(e.getMessage());
         }
     }
+
     @Override
     public List<CategorieJeux> show() throws SQLException {
         List<CategorieJeux> categorieList = new ArrayList<>();
@@ -44,8 +46,8 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
             while (rs.next()) {
                 CategorieJeux c = new CategorieJeux();
                 c.setId(rs.getInt("id"));
-                c.setNomCat(rs.getString("titre"));
-                c.setDescription(rs.getString("contenu_pub"));
+                c.setNomCat(rs.getString("name"));
+                c.setDescription(rs.getString("description"));
 
                 // Récupérer les games pour la categorie courante
                 List<Game> games = getGamesForCategorie(c.getId());
@@ -66,6 +68,7 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
         try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
+            System.out.println("Categorie supprimer avec success");
         }
     }
     public void edit(CategorieJeux c) throws SQLException
@@ -89,6 +92,24 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
             preparedStatement.executeUpdate();
         }
     }
+    public List<CategorieJeux> getAllCategories() throws SQLException {
+        List<CategorieJeux> categoriesList = new ArrayList<>();
+        String query = "SELECT * FROM categorie";
+        try (Statement stm = cnx.createStatement();
+             ResultSet rs = stm.executeQuery(query)) {
+            while (rs.next()) {
+                CategorieJeux categorie = new CategorieJeux();
+                categorie.setNomCat(rs.getString("name"));
+                categorie.setDescription(rs.getString("description"));
+                categoriesList.add(categorie);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw e; // Rethrow the exception to handle it in the caller
+        }
+        return categoriesList;
+    }
+
     private List<Game> getGamesForCategorie(int categorie_id) throws SQLException {
         List<Game> games = new ArrayList<>();
         String qry = "SELECT * FROM game WHERE categorie_id = ?";
@@ -110,7 +131,7 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
         return games;
     }
     public void addGame(CategorieJeux categorieJeux, Game game) throws SQLException {
-        String query = "INSERT INTO comment (contenu_comment, post_id) VALUES (?, ?)";
+        String query = "INSERT INTO game (description, categorie_id) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
             preparedStatement.setString(1, game.getDescription());
             preparedStatement.setInt(2, categorieJeux.getId());
@@ -123,16 +144,16 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
             throw e; // Rethrow the exception to handle it in the caller
         }
     }
-    public CategorieJeux getByName(String titre) throws SQLException {
+    public CategorieJeux getByName(String name) throws SQLException {
         String query = "SELECT * FROM categorie WHERE name = ?";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
-            preparedStatement.setString(1, titre);
+            preparedStatement.setString(1, name);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     CategorieJeux categorieJeux = new CategorieJeux();
                     categorieJeux.setId(resultSet.getInt("id"));
-                    categorieJeux.setNomCat(resultSet.getString("titre"));
-                    categorieJeux.setDescription(resultSet.getString("contenu_pub"));
+                    categorieJeux.setNomCat(resultSet.getString("name"));
+                    categorieJeux.setDescription(resultSet.getString("description"));
                     return categorieJeux;
                 }
             }

@@ -39,12 +39,12 @@ public class Containergame {
     @FXML
     void delete(ActionEvent event) {
         if (games!= null) {
-            System.out.println("Deleting Tournois: " + games.toString());
+            System.out.println("Deleting Game: " + games.toString());
             try {
 
                 gamesS.delete(games.getId());
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gameShow.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/showGame2.fxml"));
                 Parent root = loader.load();
                 GameShow gameShow = loader.getController();
 
@@ -62,7 +62,7 @@ public class Containergame {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("No Tournois selected.");
+            System.out.println("No Game selected.");
         }
 
     }

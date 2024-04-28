@@ -60,7 +60,7 @@ public class Addcategorie {
             alert.show();
 
             //show
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCat.fxml"));
             try
             {
                 Parent root = loader.load();

@@ -52,11 +52,7 @@ public class AfficherGame {
     {
         imageviewFile.setImage(image);
     }
-    public AfficherGame()
-    {
-        Connection conn = DataBase.getInstance().getConn();
-        gameService = new Game_s(conn);
-    }
+
 
     @FXML
     void initialize() {
@@ -98,11 +94,11 @@ public class AfficherGame {
     }
     @FXML
     private void supprimerGame() {
-        // Récupérer le titre du post à supprimer
+        // Récupérer le titre du game à supprimer
         String name = nameTextField.getText();
 
         try {
-            // Supprimer le post
+            // Supprimer le jeu
             gameService.deleteByName(name);
             afficherInformation("game a été supprimé avec succès.");
         } catch (SQLException e) {
@@ -114,13 +110,13 @@ public class AfficherGame {
         Stage stage = (Stage) nameTextField.getScene().getWindow(); // Récupérer la fenêtre actuelle
         stage.close(); // Fermer la fenêtre actuelle
 
-        // Ouvrir la page AjouterPost.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gameShow.fxml"));
+        // Ouvrir la page showGame.fxml
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/showGame2.fxml"));
         try {
             Parent root = loader.load();
-            Stage ajouterPostStage = new Stage();
-            ajouterPostStage.setScene(new Scene(root));
-            ajouterPostStage.show();
+            Stage aa = new Stage();
+            aa.setScene(new Scene(root));
+            aa.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

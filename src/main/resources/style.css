@@ -64,3 +64,6 @@ and open the template in the editor.
     -fx-background-color: #FFFFFF;
         -fx-background-radius: 30;
 }
+.light-gray-background{
+    -fx-background-color: #F3F3F3;
+}

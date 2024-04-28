@@ -7,15 +7,6 @@ public class CategorieJeux {
     private int id;
     private String description;
     private String NomCat;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<Game> getGames() {
         return games;
     }
@@ -25,6 +16,10 @@ public class CategorieJeux {
         this.games = games;
     }
 
+
+    public CategorieJeux() {
+    }
+   /////////////////////     relation ggghg
     public CategorieJeux(int id,String NomCat,String description) {
         this.NomCat = NomCat;
         this.id = id;
@@ -41,14 +36,9 @@ public class CategorieJeux {
         this.NomCat = NomCat;
     }
 
-    public CategorieJeux() {
-
-    }
-
     public CategorieJeux(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
     public String getNomCat() {
         return NomCat;
     }
@@ -62,8 +52,18 @@ public class CategorieJeux {
     public void setId(int id) {
         this.id = id;
     }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return NomCat;
+        return "CategorieJeux{" +
+                "description='" + description + '\'' +
+                ", NomCat='" + NomCat + '\'' +
+                '}';
     }
 }
