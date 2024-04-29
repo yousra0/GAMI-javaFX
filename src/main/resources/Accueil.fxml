@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="1366.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bty.Controllers.AcceuillController">
+
+    <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+        <BorderPane layoutX="146.0" layoutY="29.0" prefHeight="600.0" prefWidth="1100.0" styleClass="border-pane" stylesheets="dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <center>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                    <!--*******************************************  DASHBOARD :)   *****************************-->
+
+                    <AnchorPane fx:id="dashboardAnchorPane" layoutX="12.0" layoutY="420.0" prefHeight="239.0" prefWidth="1110.0" style="-fx-background-color: white;" stylesheets="dashboardDesign.css">
+                        <children>
+                            <AnchorPane layoutX="11.0" layoutY="-8.0" prefHeight="253.0" prefWidth="1103.0" styleClass="bg" stylesheets="dashboardDesign.css">
+                                <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                </styleClass>
+                                <children>
+                                    <LineChart fx:id="chart" layoutX="22.0" layoutY="14.0" prefHeight="182.0" prefWidth="1081.0">
+                                        <xAxis>
+                                            <CategoryAxis side="BOTTOM" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT" />
+                                        </yAxis>
+                                    </LineChart>
+
+
+                                </children>
+                            </AnchorPane>
+
+
+                        </children>
+                    </AnchorPane>
+
+
+
+
+
+
+
+
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </AnchorPane>
+</StackPane>
