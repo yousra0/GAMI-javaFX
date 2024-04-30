@@ -83,18 +83,21 @@ public class EditerPost
             throw new IllegalArgumentException("Post ne peut pas être null");
         }
         this.post = post;
-        this.titreTextField.setText(post.getTitre());
-        this.contenuTextField.setText(post.getContenu_pub());
-        this.dateTextField.setText(post.getDate_pub().toString());
-        this.fichierTextField.setText(post.getFile());
-        this.likesTextField.setText(String.valueOf(post.getLikes()));
-        this.dislikesTextField.setText(String.valueOf(post.getDislikes()));
+        titreTextField.setText(post.getTitre());
+        contenuTextField.setText(post.getContenu_pub());
+        dateTextField.setText(post.getDate_pub().toString());
+        fichierTextField.setText(post.getFile());
+        likesTextField.setText(String.valueOf(post.getLikes()));
+        dislikesTextField.setText(String.valueOf(post.getDislikes()));
     }
     @FXML
     public void enregistrer(ActionEvent event) {
+        conn = DataBase.getInstance().getConn();
+        postService = new Post_s(conn);
+
         // Récupérer les nouvelles valeurs des champs
         String newTitre = titreTextField.getText();
-        String newContenu = contenuTextField.getText();
+        String newContenu_pub = contenuTextField.getText();
         String newFile = fichierTextField.getText();
         int newLikes = Integer.parseInt(likesTextField.getText());
         int newDislikes = Integer.parseInt(dislikesTextField.getText());
@@ -106,7 +109,7 @@ public class EditerPost
         // Créer un nouvel objet Post avec les nouvelles valeurs
         Post updatedPost = new Post();
         updatedPost.setTitre(newTitre);
-        updatedPost.setContenu_pub(newContenu);
+        updatedPost.setContenu_pub(newContenu_pub);
         updatedPost.setDate_pub(newDate);
         updatedPost.setFile(newFile);
         updatedPost.setLikes(newLikes);

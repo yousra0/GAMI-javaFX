@@ -1,7 +1,5 @@
 package Entity;
 
-import Service.Comment_s;
-
 import java.util.ArrayList;
 import java.util.Date; // Ajout de l'import pour java.util.Date
 import java.util.List;
@@ -104,7 +102,8 @@ public class Post
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Post{" +
                 "id=" + id +
                 ", titre='" + titre + '\'' +

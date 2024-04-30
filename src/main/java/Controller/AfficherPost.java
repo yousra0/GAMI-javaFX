@@ -1,18 +1,19 @@
 package Controller;
 
-
 import Entity.Comment;
 import Entity.Post;
 import Outil.DataBase;
-import Service.Comment_s;
 import Service.Post_s;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.utils.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,13 +25,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,52 +42,34 @@ public class AfficherPost
 {
     @FXML
     private TextField titreTextField;
-
     @FXML
     private TextField contenuTextField;
-
     @FXML
     private TextField dateTextField;
-
     @FXML
     private TextField fichierTextField;
-
     @FXML
     private TextField likesTextField;
-
     @FXML
     private TextField dislikesTextField;
-
     @FXML
     private ImageView imageviewFile;
-
     @FXML
     private TextField commenttf;
-
     @FXML
     private MFXTextField commentTextField;
-
     @FXML
     private TextField searchTextField;
-
     @FXML
-    private ComboBox<String> postComboBox;
-
-    @FXML
-    private ListView<String> postListView;
-
-    @FXML
-    private Button likeButton;
-
-    @FXML
-    private Button dislikeButton;
+    private TextArea titreTextArea;
+    private List<String> titresPosts;
+    private int currentIndex = 0;
     
     private Connection conn = DataBase.getInstance().getConn();
     private Post_s postService = new Post_s(conn);
     private String selectedPostTitle;
     private List<Comment> comments = new ArrayList<>();
     private Post post;
-    
 
     public void setTitreTextField(String titreTextField) {
         this.titreTextField.setText(titreTextField);
@@ -136,8 +122,6 @@ public class AfficherPost
             e.printStackTrace();
         }
     }
-
-
     @FXML
     private void supprimerPost() {
         // Récupérer le titre du post à supprimer
@@ -166,22 +150,18 @@ public class AfficherPost
             afficherErreur("Une erreur s'est produite lors de la suppression du post : " + e.getMessage());
         }
     }
-
-
     private void afficherErreur(String message)
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);
         alert.show();
     }
-
     private void afficherInformation(String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(message);
         alert.show();
     }
-
     @FXML
     private void editPost(ActionEvent event) throws IOException
     {
@@ -194,16 +174,17 @@ public class AfficherPost
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditerPost.fxml"));
         Parent root = loader.load();
         EditerPost editerPost = loader.getController();
-
-        try {
+        try
+        {
             // Récupérer le post à éditer à partir du titre
             Post selectedPost = postService.getByTitre(selectedPostTitle);
             editerPost.setPost(selectedPost); // Make sure selectedPost is initialized
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             afficherErreur("Une erreur s'est produite lors de la récupération du post à éditer : " + e.getMessage());
             return;
         }
-
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -211,10 +192,9 @@ public class AfficherPost
         currentStage.close();
         stage.show();
     }
-
-
     @FXML
-    private void incrementLikes(ActionEvent event) {
+    private void incrementLikes(ActionEvent event)
+    {
         if (!likesTextField.getText().isEmpty()) {
             int currentLikes = Integer.parseInt(likesTextField.getText());
             setLikesTextField(currentLikes + 1);
@@ -222,35 +202,18 @@ public class AfficherPost
         }
     }
     @FXML
-    private void decrementLikes(ActionEvent event) {
-        if (!likesTextField.getText().isEmpty()) {
-            int currentLikes = Integer.parseInt(likesTextField.getText());
-            if (currentLikes > 0) {
-                setLikesTextField(currentLikes - 1);
-                updateLikes(currentLikes - 1);
-            }
-        }
-    }
-    @FXML
-    private void incrementDislikes(ActionEvent event) {
+    private void incrementDislikes(ActionEvent event)
+    {
         if (!dislikesTextField.getText().isEmpty()) {
             int currentDislikes = Integer.parseInt(dislikesTextField.getText());
             setDislikesTextField(currentDislikes + 1);
             updateDislikes(currentDislikes + 1);
         }
     }
-    @FXML
-    private void decrementDislikes(ActionEvent event) {
-        if (!dislikesTextField.getText().isEmpty()) {
-            int currentDislikes = Integer.parseInt(dislikesTextField.getText());
-            if (currentDislikes > 0) {
-                setDislikesTextField(currentDislikes - 1);
-                updateDislikes(currentDislikes - 1);
-            }
-        }
-    }
-    private void updateLikes(int newLikes) {
-        try {
+    private void updateLikes(int newLikes)
+    {
+        try
+        {
             // Récupérer le titre du post à mettre à jour
             String titre = titreTextField.getText();
 
@@ -261,8 +224,10 @@ public class AfficherPost
             afficherErreur("Une erreur s'est produite lors de la mise à jour des likes : " + e.getMessage());
         }
     }
-    private void updateDislikes(int newDislikes) {
-        try {
+    private void updateDislikes(int newDislikes)
+    {
+        try
+        {
             // Récupérer le titre du post à mettre à jour
             String titre = titreTextField.getText();
 
@@ -273,11 +238,8 @@ public class AfficherPost
             afficherErreur("Une erreur s'est produite lors de la mise à jour des dislikes : " + e.getMessage());
         }
     }
-
     @FXML
-    private void exporterEnPDF(ActionEvent event)
-    {
-        //fonction exporter pdf dans le dossier documents
+    private void exporterEnPDF(ActionEvent event) {
         Document document = new Document();
 
         try {
@@ -286,23 +248,65 @@ public class AfficherPost
 
             // Chemin d'accès où le fichier PDF sera enregistré
             String pathToSave = System.getProperty("user.home") + File.separator + "Documents" + File.separator + fileName;
-
             PdfWriter.getInstance(document, new FileOutputStream(pathToSave));
 
             document.open();
-            document.add(new Paragraph("Titre: " + titreTextField.getText()));
-            document.add(new Paragraph("Contenu: " + contenuTextField.getText()));
-            document.add(new Paragraph("Date: " + dateTextField.getText()));
-            document.add(new Paragraph("Fichier: " + fichierTextField.getText()));
-            document.add(new Paragraph("Likes: " + likesTextField.getText()));
-            document.add(new Paragraph("Dislikes: " + dislikesTextField.getText()));
-            document.close();
 
+            // Ajouter un titre au document
+            Paragraph title = new Paragraph("Détails du Post");
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+
+            // Créer un tableau pour les données du post
+            PdfPTable table = new PdfPTable(2);
+            table.setWidthPercentage(100);
+
+            // Ajouter les cellules du tableau avec les données du post
+            table.addCell("Titre");
+            table.addCell(titreTextField.getText());
+
+            table.addCell("Contenu");
+            table.addCell(contenuTextField.getText());
+
+            table.addCell("Date");
+            table.addCell(dateTextField.getText());
+
+            table.addCell("Fichier");
+            table.addCell(fichierTextField.getText());
+
+            table.addCell("Likes");
+            table.addCell(likesTextField.getText());
+
+            table.addCell("Dislikes");
+            table.addCell(dislikesTextField.getText());
+
+            // Ajouter le tableau au document
+            document.add(table);
+
+            // Charger l'image à partir du fichier spécifié dans fichierTextField
+            File imageFile = new File(fichierTextField.getText());
+            if (imageFile.exists()) {
+                Image image = new Image(imageFile.toURI().toString());
+
+                // Convertir l'image JavaFX en tableau de bytes
+                BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                ImageIO.write(bImage, "png", outputStream);
+                byte[] imageBytes = outputStream.toByteArray();
+
+                // Ajouter l'image au document PDF
+                com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(imageBytes);
+                document.add(pdfImage);
+            }
+
+            document.close();
             afficherInformation("Les données ont été exportées en PDF avec succès.");
         } catch (IOException | DocumentException e) {
             afficherErreur("Une erreur s'est produite lors de l'exportation en PDF : " + e.getMessage());
         }
     }
+
+
     @FXML
     void openMap(ActionEvent event)
     {
@@ -334,30 +338,15 @@ public class AfficherPost
             e.printStackTrace();
         }
     }
-    /*@FXML
-    public void initialize() {
-        try {
-            List<String> titresPosts = postService.getAllTitres();
-            postListView.getItems().addAll(titresPosts);
-
-            postListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                try {
-                    Post selectedPost = postService.getByTitre(newValue);
-                    setTitreTextField(selectedPost.getTitre());
-                    setContenuTextField(selectedPost.getContenu_pub());
-                    setDateTextField(selectedPost.getDate_pub());
-                    setFichierTextField(selectedPost.getFile());
-                    setLikesTextField(selectedPost.getLikes());
-                    setDislikesTextField(selectedPost.getDislikes());
-                    selectPost(selectedPost.getTitre());
-                } catch (SQLException e) {
-                    afficherErreur("Une erreur s'est produite lors de la récupération des détails du post : " + e.getMessage());
-                }
-            });
-        } catch (SQLException e) {
-            afficherErreur("Une erreur s'est produite lors du chargement des titres des posts : " + e.getMessage());
+    private String filterInappropriateWords(String comment) {
+        // Liste de mots inappropriés à remplacer
+        List<String> inappropriateWords = Arrays.asList("fuck", "shit", "hell");
+        // Remplacer les mots inappropriés par des astérisques
+        for (String word : inappropriateWords) {
+            comment = comment.replaceAll(word, "*".repeat(word.length()));
         }
-    }*/
+        return comment;
+    }
     @FXML
     private void addComment(ActionEvent event)
     {
@@ -386,6 +375,9 @@ public class AfficherPost
                 // Afficher le commentaire ajouté dans commenttf
                 commenttf.setText(nouveauCommentaire.getContenu_comment());
 
+                // Mettre à jour le titre du post affiché
+                setTitreTextField(post.getTitre());
+
                 afficherInformation("Le commentaire a été ajouté avec succès.");
                 // Effacer le champ de texte du commentaire après l'ajout
                 commentTextField.clear();
@@ -400,6 +392,7 @@ public class AfficherPost
             afficherErreur("Veuillez sélectionner un post.");
         }
     }
+
     private void selectPost(String titre)
     {
         selectedPostTitle = titre;
@@ -437,11 +430,6 @@ public class AfficherPost
 
         afficherErreur("Aucun post correspondant n'a été trouvé.");
     }
-
-    @FXML
-    private TextArea titreTextArea;
-    private List<String> titresPosts;
-    private int currentIndex = 0;
     @FXML
     public void initialize() {
         try {
@@ -514,18 +502,17 @@ public class AfficherPost
             afficherErreur("Une erreur s'est produite lors de la suppression du commentaire : " + e.getMessage());
         }
     }
-
-
     @FXML
-    private void postSuivant(ActionEvent event) {
+    private void postSuivant(ActionEvent event)
+    {
         if (currentIndex < titresPosts.size() - 1) {
             currentIndex++;
             afficherPostCourant();
         }
     }
-
     @FXML
-    private void postPrecedent(ActionEvent event) {
+    private void postPrecedent(ActionEvent event)
+    {
         if (currentIndex > 0) {
             currentIndex--;
             afficherPostCourant();

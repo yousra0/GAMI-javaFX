@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="702.0" prefWidth="932.0" style="-fx-background-color: #8c8fad;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherPost">
+<AnchorPane prefHeight="702.0" prefWidth="932.0" style="-fx-background-color: #27292A;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherPost">
    <children>
       <HBox prefHeight="36.0" prefWidth="932.0">
          <children>
@@ -30,7 +30,7 @@
                         <HBox layoutX="62.0" prefHeight="44.0" prefWidth="56.0" />
                         <TextField fx:id="searchTextField" layoutX="278.0" layoutY="15.0" prefHeight="44.0" prefWidth="529.0" promptText="rechercher sur GAMI..." style="-fx-background-radius: 10; -fx-font-weight: bold;" />
                         <HBox layoutX="278.0" prefHeight="44.0" prefWidth="56.0" />
-                        <Button layoutX="887.0" layoutY="14.0" mnemonicParsing="false" onAction="#retournerAajouterPost" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #b2b6eb; -fx-background-radius: 10; -fx-font-weight: bold;" text="🠔" textAlignment="JUSTIFY">
+                        <Button layoutX="887.0" layoutY="14.0" mnemonicParsing="false" onAction="#retournerAajouterPost" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #E75E8D; -fx-background-radius: 10; -fx-font-weight: bold;" text="🠔" textAlignment="JUSTIFY">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -47,11 +47,14 @@
          <content>
             <HBox prefHeight="615.0" prefWidth="934.0">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7a73bf;">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #27292A;">
                      <children>
                         <Button fx:id="exportButton" layoutX="49.0" layoutY="139.0" onAction="#exporterEnPDF" prefHeight="51.0" prefWidth="109.0" style="-fx-font-weight: bold; -fx-background-color: #c9adde; -fx-background-radius: 10;" text="PDF" />
                         <MFXButton fx:id="openMapButton" buttonType="RAISED" layoutX="48.0" layoutY="69.0" onAction="#openMap" prefHeight="50.0" prefWidth="111.0" style="-fx-background-radius: 10; -fx-font-weight: bold; -fx-background-color: #c9adde;" text="Ouvrir la carte" />
-                        <Button fx:id="precedentButton" layoutX="48.0" layoutY="516.0" onAction="#postPrecedent" prefHeight="52.0" prefWidth="112.0" style="-fx-background-color: #e0dae6; -fx-background-radius: 10; -fx-font-weight: bold;" text="Précédent" />
+                        <Button fx:id="precedentButton" layoutX="48.0" layoutY="516.0" onAction="#postPrecedent" prefHeight="52.0" prefWidth="112.0" style="-fx-background-color: #E75E8D; -fx-background-radius: 10; -fx-font-weight: bold;" text="Précédent">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children></Pane>
                   <ScrollPane>
                      <content>
@@ -59,7 +62,7 @@
                            <children>
                               <HBox prefHeight="51.0" prefWidth="522.0" style="-fx-background-color: #b2b6eb; -fx-background-radius: 5;">
                                  <children>
-                                    <Pane prefHeight="41.0" prefWidth="522.0">
+                                    <Pane prefHeight="41.0" prefWidth="522.0" style="-fx-background-color: #E75E8D;">
                                        <children>
                                           <Button fx:id="add" layoutX="436.0" layoutY="14.0" mnemonicParsing="false" onAction="#add" style="-fx-background-radius: 10; -fx-font-weight: bold; -fx-background-color: #dde7f0;" text="Ajouter" />
                                           <TextField editable="false" layoutX="8.0" layoutY="14.0" prefHeight="25.0" prefWidth="416.0" style="-fx-background-radius: 10;" text="Quoi de neuf ?" />
@@ -68,7 +71,7 @@
                                  </children>
                               </HBox>
                               <Pane prefHeight="33.0" prefWidth="522.0" />
-                              <Pane prefHeight="538.0" prefWidth="522.0" style="-fx-background-color: #b2b6eb;">
+                              <Pane prefHeight="538.0" prefWidth="522.0" style="-fx-background-color: #E75E8D;">
                                  <children>
                                     <TextField fx:id="titreTextField" editable="false" layoutX="70.0" layoutY="35.0" />
                                     <TextField fx:id="contenuTextField" editable="false" layoutX="70.0" layoutY="82.0" prefHeight="63.0" prefWidth="365.0" />
@@ -90,17 +93,20 @@
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7a73bf;">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #27292A;">
                      <children>
                         <Button fx:id="editButton" layoutX="37.0" layoutY="64.0" mnemonicParsing="false" onAction="#editPost" prefHeight="51.0" prefWidth="114.0" style="-fx-font-weight: bold; -fx-background-color: #70c29a; -fx-background-radius: 10;" text="Modifier" />
                         <Button layoutX="38.0" layoutY="136.0" mnemonicParsing="false" onAction="#supprimerPost" prefHeight="50.0" prefWidth="113.0" style="-fx-font-weight: bold; -fx-background-color: #e36f5f; -fx-background-radius: 10;" text="Supprimer" />
-                        <Button fx:id="suivantButton" layoutX="37.0" layoutY="514.0" onAction="#postSuivant" prefHeight="53.0" prefWidth="114.0" style="-fx-background-color: #e0dae6; -fx-background-radius: 10; -fx-font-weight: bold;" text="Suivant" />
+                        <Button fx:id="suivantButton" layoutX="37.0" layoutY="514.0" onAction="#postSuivant" prefHeight="53.0" prefWidth="114.0" style="-fx-background-color: #E75E8D; -fx-background-radius: 10; -fx-font-weight: bold;" text="Suivant">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children></Pane>
                </children>
             </HBox>
          </content>
       </ScrollPane>
-      <Button fx:id="searchButton" layoutX="159.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #b2b6eb; -fx-background-radius: 10; -fx-font-weight: bold;" text="Rechercher">
+      <Button fx:id="searchButton" layoutX="159.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #E75E8D; -fx-background-radius: 10; -fx-font-weight: bold;" text="Rechercher">
          <font>
             <Font size="17.0" />
          </font>

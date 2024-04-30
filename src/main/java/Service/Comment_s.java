@@ -4,7 +4,6 @@ import Entity.Comment;
 import Entity.Post;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,12 +102,14 @@ public class Comment_s implements Services <Comment>
     private Post getPostById(int id)
     {
         Post post = null;
-        try {
+        try
+        {
             String sql = "SELECT * FROM post WHERE id = ?";
             PreparedStatement ps = this.cnx.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            if (rs.next())
+            {
                 String titre = rs.getString("titre");
                 String contenu_pub = rs.getString("contenu_pub");
                 Date date_pub = rs.getDate("date_pub");
@@ -119,7 +120,9 @@ public class Comment_s implements Services <Comment>
             }
             rs.close();
             ps.close();
-        } catch (SQLException var16) {
+        }
+        catch (SQLException var16)
+        {
             var16.printStackTrace();
         }
         return post;

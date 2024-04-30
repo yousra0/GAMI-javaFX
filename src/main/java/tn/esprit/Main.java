@@ -25,7 +25,7 @@ public class Main {
             Post post = new Post();
             post.setTitre("titre");
             post.setContenu_pub("Contenu");
-            Date datePub = dateFormat.parse("2024-03-29");
+            Date   datePub = dateFormat.parse("2024-03-29");
             post.setDate_pub(datePub);
             post.setFile("Chemin/vers/fichier");
             post.setLikes(1);
