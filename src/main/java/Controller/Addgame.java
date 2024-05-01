@@ -46,6 +46,7 @@ public class Addgame {
     private TextField imageTextField;
     @FXML
     private ComboBox<String> combo;
+    private List<CategorieJeux> categories;
 
     Connection conn = DataBase.getInstance().getConn();
     Game_s gameService = new Game_s(conn);
@@ -97,8 +98,28 @@ public class Addgame {
         }
 
         LocalDate selectedDate = dateTextField.getValue();
+        // Récupérer l'index sélectionné dans le ComboBox
+        int selectedCategoryId = combo.getSelectionModel().getSelectedIndex()+1;
+        /*CategorieJeux selectedCategory = null;
+        String selectedCategoryName = combo.getValue();
+        for (CategorieJeux category : categories) {
+            if (category.getNomCat().equals(selectedCategoryName)) {
+                selectedCategory = category;
+                break;
+            }
+        }
 
-        Game game = new Game(nameTextField.getText(), descriptionTextField.getText(), selectedDate, imageTextField.getText(),lienTextField.getText());
+        if (selectedCategory == null) {
+            afficherErreur("La catégorie sélectionnée est introuvable.");
+            return;
+        }
+
+        // Now you have the selected category object, you can retrieve its ID
+        int categoryId = selectedCategory.getId();*/
+
+        // Créer un nouvel objet Game avec les informations récupérées
+        Game game = new Game(nameTextField.getText(), descriptionTextField.getText(), selectedDate, imageTextField.getText(), lienTextField.getText(), selectedCategoryId);
+        //game.setCategorie_id(categoryId);
 
         try {
             // Ajouter le jeu
@@ -117,6 +138,8 @@ public class Addgame {
                 afficherGame.setDateTextField(selectedDate.toString());
                 afficherGame.setImageTextField(imageTextField.getText());
                 afficherGame.setImage(imageviewFile.getImage());
+
+
 
                 nameTextField.getScene().setRoot(root);
             } catch (IOException e) {
@@ -179,7 +202,7 @@ public class Addgame {
             // Gérer l'exception en fonction de vos besoins
             e.printStackTrace();
         }
-        // Limiter la sélection de dates futures dans le DatePicker
+// Limiter la sélection de dates futures dans le DatePicker
         dateTextField.setDayCellFactory(picker -> new DateCell() {
             @Override
             public void updateItem(LocalDate date, boolean empty) {
@@ -188,7 +211,7 @@ public class Addgame {
                 setDisable(date.isAfter(LocalDate.now()));
             }
         });
+
+
     }
-
-
 }

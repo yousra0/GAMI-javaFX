@@ -69,14 +69,16 @@ public class Game {
     }
     public Game(){}
     //id`, `categorie_id`, `name`, `description`, `date`, `image`, `lien`
-    public Game(String name, String description, LocalDate date, String image,int categorie_id) {
+    public Game(String name, String description, LocalDate date, String image,String lien,int categorie_id) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.image = image;
+        this.lien = lien;
         this.categorie_id=categorie_id;
 
     }
+
 
 
     public Game(String name, String description, LocalDate date, String image,String lien,CategorieJeux categorieJeux) {

@@ -35,6 +35,12 @@
             <artifactId>materialfx</artifactId>
             <version>11.13.10</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>19</version>
+        </dependency>
 
 
     </dependencies>

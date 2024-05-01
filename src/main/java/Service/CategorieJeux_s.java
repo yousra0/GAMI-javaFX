@@ -160,4 +160,18 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
         }
         return null; // Retourne null si aucun categorie n'est trouvé avec ce titre
     }
+    //homework to do !!!!!!!!!!!
+    public String getCategoryNameById(int categoryId) throws SQLException {
+        String query = "SELECT name FROM categorie WHERE id = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+            preparedStatement.setInt(1, categoryId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("name");
+                }
+            }
+        }
+        return null; // Retourne null si aucune catégorie n'est trouvée avec cet ID
+    }
+
 }

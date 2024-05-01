@@ -18,26 +18,24 @@ public class Game_s implements Services<Game> {
     }
 
 
-    public Game_s() {
-
-    }
+    public Game_s() {}
 
     @Override
     public void add(Game g) throws SQLException {
-        String qry="INSERT INTO `game`( `name`, `description`, `date`, `image`,`lien`) VALUES (?,?,?,?,?)";
+        String qry="INSERT INTO `game`(  `categorie_id`, `name`,`description`, `date`, `image`,`lien`) VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
-            pstm.setString(1,g.getName());
-            pstm.setString(2,g.getDescription());
-            pstm.setDate(3, java.sql.Date.valueOf(g.getDate()));
-            pstm.setString(4,g.getImage());
-            pstm.setString(5,g.getLien());
+            pstm.setInt(1,g.getCategorie_id());
+            pstm.setString(2,g.getName());
+            pstm.setString(3,g.getDescription());
+            pstm.setDate(4, java.sql.Date.valueOf(g.getDate()));
+            pstm.setString(5,g.getImage());
+            pstm.setString(6,g.getLien());
             pstm.executeUpdate();
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
-
     }
 
     @Override
@@ -53,6 +51,8 @@ public class Game_s implements Services<Game> {
                 g.setDescription(rs.getString("description"));
                 g.setDate(rs.getDate("date").toLocalDate());
                 g.setImage(rs.getString("image"));
+                g.setLien(rs.getString("lien"));
+                g.setCategorie_id(rs.getInt("categorie_id"));
                 gamesList.add(g);
             }
         } catch (SQLException e) {
@@ -61,12 +61,71 @@ public class Game_s implements Services<Game> {
         }
         return gamesList;
     }
+
+    @Override
+    public void delete(int id) throws SQLException
+    {
+        String query = "DELETE FROM game WHERE id = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            System.out.println("Jeux supprimer avec success");
+        }
+    }
+
+    @Override
+    public void edit(Game c) throws SQLException {
+        String sql = "UPDATE `game` SET `name`=?, `description`=?, `date`=?, `image`=?, `lien`=?, `categorie_id`=? WHERE `id`=?";
+        try (PreparedStatement pstm = cnx.prepareStatement(sql))
+        {
+            pstm.setString(1, c.getName());
+            pstm.setString(2, c.getDescription());
+            pstm.setDate(3, java.sql.Date.valueOf(c.getDate()));
+            pstm.setString(4, c.getImage());
+            pstm.setString(5, c.getLien());
+            pstm.setInt(6, c.getCategorie_id());
+            pstm.setInt(7, c.getId());
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error while editing game: " + e.getMessage());
+            throw e;
+        }
+    }
+    private Game getGameById(int id) {
+        Game game = null;
+        try {
+            String sql = "SELECT * FROM game WHERE id = ?";
+            PreparedStatement ps = this.cnx.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                Date date = rs.getDate("date");
+                String image = rs.getString("image");
+                String lien = rs.getString("lien");
+                // Ajoutez ici la récupération d'autres champs si nécessaire
+
+                // Instanciez un nouvel objet Game avec les valeurs récupérées
+                game = new Game(id, name, description, date.toLocalDate(), image, lien);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return game;
+    }
+
+
+
+
     public List<Game> getAll() {
 
         List<Game> all = new ArrayList<>();
         Statement stmt;
         try {
-            String sql = "select * from jeux";
+            String sql = "select * from game";
 
             stmt = cnx.createStatement();
 
@@ -90,20 +149,26 @@ public class Game_s implements Services<Game> {
         }
         return all;
     }
-    @Override
-    public void edit(Game game) throws SQLException {
+
+    public void delete(Game t) {
+        try {
+            String sql = "DELETE FROM game WHERE id = ?";
+
+            PreparedStatement stmt = cnx.prepareStatement(sql);
+
+            stmt.setInt(1, t.getId());
+
+            stmt.executeUpdate();
+            System.out.println("Jeux supprimer avec success");
+
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
 
     }
-    @Override
-    public void delete(int id) throws SQLException
-    {
-        String query = "DELETE FROM game WHERE id = ?";
-        try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
-            System.out.println("Jeux supprimer avec success");
-        }
-    }
+
 
     public void deleteByName(String name) throws SQLException {
         String query = "DELETE FROM game WHERE name = ?";

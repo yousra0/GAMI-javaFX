@@ -17,7 +17,7 @@ public class Home extends Application
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Backcat.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/addgame.fxml"));
         try
         {
             Parent root = loader.load();
@@ -30,4 +30,5 @@ public class Home extends Application
             throw new RuntimeException(e);
         }
     }
+
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="506.0" prefWidth="335.0" style="-fx-background-color: #d9cef2;" stylesheets="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Containergame">
+<VBox alignment="CENTER" prefHeight="506.0" prefWidth="335.0" style="-fx-background-color: #d9cef2;" stylesheets="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ContainergameBack">
    <children>
       <Label fx:id="lienTF" prefHeight="44.0" prefWidth="178.0" text="Most Rated" textFill="#726b6b">
          <font>
@@ -26,7 +26,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="5.0" prefWidth="57.0" styleClass="free-delivery-card">
                <children>
-                  <VBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="55.0" />
+                  <VBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="78.0" />
                </children>
             </HBox>
             <ImageView fitHeight="60.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
@@ -49,8 +49,8 @@
       </ImageView>
       <HBox alignment="CENTER" prefHeight="73.0" prefWidth="335.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#Play" prefHeight="46.0" prefWidth="95.0" styleClass="button-panier" text="Play" />
-            <Button mnemonicParsing="false" onAction="#delete" prefHeight="47.0" prefWidth="98.0" styleClass="button-panier" stylesheets="" text="delete" textFill="#252423" />
+            <Button mnemonicParsing="false" onAction="#edit" prefHeight="47.0" prefWidth="98.0" styleClass="button-panier" stylesheets="" text="edit" textFill="#252423" />
+            <Button layoutX="128.0" layoutY="23.0" mnemonicParsing="false" onAction="#delete" prefHeight="47.0" prefWidth="98.0" styleClass="button-panier" stylesheets="" text="delete" textFill="#252423" />
          </children>
       </HBox>
    </children>
