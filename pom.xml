@@ -19,6 +19,7 @@
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.33</version>
     </dependency>
+        <!-- Dépendances pour JavaFX -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -29,20 +30,58 @@
             <artifactId>javafx-controls</artifactId>
             <version>21.0.2</version>
         </dependency>
+        <!-- Dépendance pour ControlsFX -->
+
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>[3.0.0,)</version>
+        </dependency>
+        <!-- Dépendances pour Apache POI -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
+            <!-- Plugin pour le compilateur Maven -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+            <!-- Plugin pour JavaFX Maven -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
-                <configuration>
-                    <mainClass>Controller.Home</mainClass>
-                    <options>
-                        <option>--add-modules</option>
-                        <option>javafx.controls,javafx.fxml</option>
-                    </options>
-                </configuration>
+                <executions>
+                    <execution>
+                        <!-- Default configuration for running with: mvn clean javafx:run -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>Controller.Home</mainClass>
+                            <launcher>app</launcher>
+                            <jlinkZipName>app</jlinkZipName>
+                            <jlinkImageName>app</jlinkImageName>
+                            <noManPages>true</noManPages>
+                            <stripDebug>true</stripDebug>
+                            <noHeaderFiles>true</noHeaderFiles>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

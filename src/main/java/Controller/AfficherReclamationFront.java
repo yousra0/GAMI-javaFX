@@ -29,7 +29,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
-public class AfficherReclamation
+public class AfficherReclamationFront
 {
     private int currentIndex = 0;
 
@@ -72,7 +72,7 @@ public class AfficherReclamation
         this.datetf.setText(datetf);
     }
 
-    public AfficherReclamation()
+    public AfficherReclamationFront()
     {
         Connection cnx = DataBase.getInstance().getConn();
         reclamationService = new Reclamation_s(cnx);
@@ -180,7 +180,6 @@ public class AfficherReclamation
     }
     @FXML
     public void initialize() {
-        statt();
 
         try {
 
@@ -196,7 +195,10 @@ public class AfficherReclamation
             titretf.setText(titre);
 
             try {
+                // Récupérer la réclamation sélectionnée
                 Reclamation selectedReclamation = reclamationService.getByTitre(titre);
+
+                // Afficher les détails de la réclamation
                 setTitretf(selectedReclamation.getTitre_rec());
                 setContenutf(selectedReclamation.getContenu_rec());
                 setDatetf(selectedReclamation.getDate_rec());
@@ -204,16 +206,17 @@ public class AfficherReclamation
                 // Récupérer les réponses associées à cette réclamation
                 List<Reponse> reponses = reclamationService.getReponsesByReclamationId(selectedReclamation.getId());
 
-                // Afficher les réponses dans l'interface utilisateur
+                // Afficher les réponses dans le champ prévu à cet effet
                 StringBuilder reponsesText = new StringBuilder();
                 for (Reponse reponse : reponses) {
                     reponsesText.append(reponse.getContenu_rep()).append("\n");
                 }
                 reponsetf.setText(reponsesText.toString());
 
+                // Mettre à jour la réclamation sélectionnée
                 selectReclamation(selectedReclamation.getTitre_rec());
             } catch (SQLException e) {
-                afficherErreur("Une erreur s'est produite lors de la récupération des détails du reclamation : " + e.getMessage());
+                afficherErreur("Une erreur s'est produite lors de la récupération des détails de la réclamation : " + e.getMessage());
             }
         } else {
             titretf.setText("");
@@ -323,102 +326,11 @@ public class AfficherReclamation
 
 
     }
-    void statt(){
-
-        // Récupérer toutes les réclamations à l'aide du service de réclamations
-        List<Reclamation> reclamations = reclamationService.getAll();
-
-        // Fonction pour calculer les statistiques de réclamation par date
-        Map<String, Integer> statistiques = new HashMap<>();
-
-        // Parcourir la liste des réclamations
-        for (Reclamation reclamation : reclamations) {
-            String date = reclamation.getDate_rec();
-
-            // Vérifier si la date existe déjà dans les statistiques
-            if (statistiques.containsKey(date)) {
-                // Si la date existe, incrémenter le compteur correspondant
-                int count = statistiques.get(date);
-                statistiques.put(date, count + 1);
-            } else {
-                // Si la date n'existe pas, ajouter une nouvelle entrée avec un compteur initial de 1
-                statistiques.put(date, 1);
-            }
-        }
 
 
-        // Convertir les statistiques en une liste d'entrées
-        List<Map.Entry<String, Integer>> statistiquesList = new ArrayList<>(statistiques.entrySet());
-
-        // Créer une liste d'objets PieChart.Data pour le diagramme circulaire
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        for (Map.Entry<String, Integer> entry : statistiquesList) {
-            String date = entry.getKey();
-            int nombreReclamations = entry.getValue();
-            pieChartData.add(new PieChart.Data("Date " + date, nombreReclamations));
-        }
-
-        // Mettre à jour les données du PieChart avec les statistiques
-        pieChartR.setData(pieChartData);
-        pieChartR.setTitle("Statistiques par Date de Reclamation");
-
-    }
-    @FXML
-    private void ExportExcel() {
-        // Récupérer toutes les réclamations à partir du service de réclamations
-        List<Reclamation> reclamations = reclamationService.getAll();
-        // Définir le chemin du fichier Excel de destination
-
-        String filePath = "export.xlsx";
-        exportToExcel(reclamations, filePath);
-        System.out.println("Données exportées vers Excel.");
-
-    }
-    public void exportToExcel(List<Reclamation> reclamations, String filePath) {
-        try (Workbook workbook = new XSSFWorkbook()) {
-            Sheet sheet = workbook.createSheet("Reclamations");
-
-            // Style pour l'état "En cours de traitement" (noir)
-            CellStyle enCoursStyle = workbook.createCellStyle();
-            enCoursStyle.setFillForegroundColor(IndexedColors.BLACK.getIndex());
-            enCoursStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-
-            // Style pour l'état "Refusé" (rouge)
-            CellStyle refuseStyle = workbook.createCellStyle();
-            refuseStyle.setFillForegroundColor(IndexedColors.RED.getIndex());
-            refuseStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-
-            // Style pour l'état "Demande traitée" (vert)
-            CellStyle traiteStyle = workbook.createCellStyle();
-            traiteStyle.setFillForegroundColor(IndexedColors.GREEN.getIndex());
-            traiteStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-            // Créer une ligne d'en-tête avec les attributs
-            Row headerRow = sheet.createRow(0);
-            headerRow.createCell(0).setCellValue("Titre");
-            headerRow.createCell(1).setCellValue("contenu");
-            headerRow.createCell(2).setCellValue("Date");
-
-            // Parcourir les demandes et les écrire dans le fichier Excel
-            int rowNum = 1;
-            for (Reclamation demande : reclamations) {
-                Row row = sheet.createRow(rowNum++);
-                int colNum = 0;
-                row.createCell(colNum++).setCellValue(demande.getTitre_rec());
-                row.createCell(colNum++).setCellValue(demande.getContenu_rec());
-                row.createCell(colNum++).setCellValue(demande.getDate_rec());
-                //row.createCell(colNum++).setCellValue(reclamationService.getEmailDirecteur(demande.getDirecteurCampagne()));
-                //Cell cell = row.createCell(colNum);
-                //cell.setCellValue(demande.getStatut());
 
 
-            }
-            try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
-                workbook.write(outputStream);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
     @FXML
     private void reclamationSuivant(ActionEvent event) {
         if (currentIndex < titresReclamations.size() - 1) {

@@ -12,11 +12,15 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import Outil.DataBase;
+import static org.controlsfx.control.Notifications.create;
+import org.controlsfx.control.Notifications;
+import javafx.scene.control.*;
 
 public class AjouterReclamation {
 
@@ -30,7 +34,7 @@ public class AjouterReclamation {
     private TextField titreTextField;
 
     Connection cnx = DataBase.getInstance().getConn();
-   Reclamation_s reclamationService = new Reclamation_s(cnx);
+    Reclamation_s reclamationService = new Reclamation_s(cnx);
 
     @FXML
     void AjouterReclamation(ActionEvent event)
@@ -57,6 +61,8 @@ public class AjouterReclamation {
 
         // Récupérer la date actuelle du système
         LocalDate currentDate = LocalDate.now();
+        Date date = java.sql.Date.valueOf(currentDate);
+
 
         // Format the selected date into a string
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -64,8 +70,7 @@ public class AjouterReclamation {
 
         Reclamation reclamation = new Reclamation(titreTextField.getText(), contenuTextField.getText(), dateString);
 
-        try
-        {
+        try {
             //add
             reclamationService.add(reclamation);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -74,8 +79,7 @@ public class AjouterReclamation {
 
             //show
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamation.fxml"));
-            try
-            {
+            try {
                 Parent root = loader.load();
                 AfficherReclamation afficherReclamation = loader.getController();
                 afficherReclamation.setTitretf(titreTextField.getText());
@@ -83,19 +87,23 @@ public class AjouterReclamation {
                 afficherReclamation.setDatetf(dateString);
 
                 titreTextField.getScene().setRoot(root);
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
-        }
-        catch (SQLException e)
-        {
+            // Show notification
+            Notifications.create()
+                    .title("Réclamation ajoutée")
+                    .text("La réclamation a été ajoutée avec succès.")
+                    .showInformation();
+
+        } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
             alert.show();
         }
+
+
 
     }
     private void afficherErreur(String message)

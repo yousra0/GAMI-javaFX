@@ -10,7 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class Reclamation_s implements Services<Reclamation> {
 
     private Connection cnx;  // Déclaration de la connexion
@@ -85,7 +86,9 @@ public class Reclamation_s implements Services<Reclamation> {
             pstm.setString(1, reclamation.getContenu_rec());
             pstm.setString(2, reclamation.getDate_rec());
             pstm.setInt(3, reclamation.getId());
+
             int rowsAffected = pstm.executeUpdate();
+
             if (rowsAffected > 0) {
                 System.out.println("Réclamation modifiée avec succès !");
             } else {
@@ -124,7 +127,7 @@ public class Reclamation_s implements Services<Reclamation> {
         }
         return reponses;
     }
-        public void addReponse(Reclamation reclamation, Reponse reponse) throws SQLException {
+    public void addReponse(Reclamation reclamation, Reponse reponse) throws SQLException {
         String query = "INSERT INTO reponse (contenu_rep, reclamation_id) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
             preparedStatement.setString(1, reponse.getContenu_rep());
@@ -188,4 +191,59 @@ public class Reclamation_s implements Services<Reclamation> {
         }
         return titres;
     }
+    public void deleteReponse(int reponseId) throws SQLException {
+        String query = "DELETE FROM reponse WHERE id = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+            preparedStatement.setInt(1, reponseId);
+            preparedStatement.executeUpdate();
+        }
+    }
+    public List<Reponse> getReponsesByContenu(String contenu) throws SQLException {
+        List<Reponse> reponses = new ArrayList<>();
+        String qry = "SELECT * FROM reponse WHERE contenu_rep = ?";
+        try (PreparedStatement pstm = cnx.prepareStatement(qry)) {
+            pstm.setString(1, contenu);
+            try (ResultSet rs = pstm.executeQuery()) {
+                while (rs.next()) {
+                    Reponse r = new Reponse();
+                    r.setId(rs.getInt("id"));
+                    r.setContenu_rep(rs.getString("contenu_rep"));
+                    r.setreclamation_id(rs.getInt("reclamation_id"));
+                    reponses.add(r);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw e; // Rethrow the exception to handle it in the caller
+        }
+        return reponses;
+    }
+
+    public void editByTitre(Reclamation reclamation) {
+    }
+    public List<Reclamation> getAll() {
+        String requete = "SELECT * FROM reclamation";
+        List<Reclamation> list = new ArrayList<>();
+
+        try {
+            Statement statement = cnx.createStatement();
+            ResultSet resultSet = statement.executeQuery(requete);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String titre_rec = resultSet.getString("titre_rec");
+                String contenu_rec = resultSet.getString("contenu_rec");
+                String date = resultSet.getString("date_rec");
+
+
+                Reclamation reclamation = new Reclamation(id, titre_rec, contenu_rec, date);
+                list.add(reclamation);
+            }
+
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération des demandes : " + e.getMessage());
+        }
+    }
+
 }
