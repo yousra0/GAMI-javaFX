@@ -17,11 +17,7 @@
                     <PropertyValueFactory property="roles" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="colId" text="ID">
-                <cellValueFactory>
-                    <PropertyValueFactory property="id" />
-                </cellValueFactory>
-            </TableColumn>
+
             <TableColumn fx:id="colEmail" text="Email">
                 <cellValueFactory>
                     <PropertyValueFactory property="email" />

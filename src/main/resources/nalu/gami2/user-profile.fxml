@@ -10,35 +10,35 @@
 <VBox alignment="CENTER" prefHeight="598.0" prefWidth="516.0" spacing="10" style="-fx-background-color: #0e8389;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.UserProfileController">
     <ImageView fx:id="profileImageView" fitHeight="124.0" fitWidth="146.0" preserveRatio="true" />
 
-    <Label style="-fx-font-weight: bold;" text="Nom" textFill="#d9cabc">
+    <Label style="-fx-font-weight: bold;" text="Nom" textFill="WHITE">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="nameField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Prénom" textFill="#d9cabc">
+    <Label style="-fx-font-weight: bold;" text="Prénom" textFill="WHITE">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="prenomField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Email" textFill="#d9cabc">
+    <Label style="-fx-font-weight: bold;" text="Email" textFill="WHITE">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="emailField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Date de Naissance" textFill="#d9cabc">
+    <Label style="-fx-font-weight: bold;" text="Date de Naissance" textFill="WHITE">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="datenaiField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Pays" textFill="#d9cabc">
+    <Label style="-fx-font-weight: bold;" text="Pays" textFill="WHITE">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>

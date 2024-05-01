@@ -69,7 +69,7 @@ public class SignUpController implements Initializable {
 
             newUser.setDatenai(formattedDate);
             newUser.setPprofile(selectedFile.toURI().toString());
-            newUser.setRoles("[\"ROLE_USER\"]"); // Supposons un rôle par défaut 'USER'
+            newUser.setRoles("[\"ROLE_USER\"]");
 
             // Utilisez user_s pour ajouter l'utilisateur avec les contrôles de saisie
             userService.add(newUser);
@@ -77,7 +77,7 @@ public class SignUpController implements Initializable {
             // Afficher une alerte de succès
             showAlert(AlertType.INFORMATION, "Inscription Réussie", "Votre compte a été créé avec succès.");
 
-            // Vous pouvez ici ajouter la navigation vers l'écran de connexion ou actualiser l'écran
+
 
         } catch (SQLException e) {
             // Afficher une alerte d'erreur

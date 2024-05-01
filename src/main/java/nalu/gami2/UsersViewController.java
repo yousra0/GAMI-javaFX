@@ -65,14 +65,14 @@ public class UsersViewController implements Initializable {
     @FXML
     public void initialize() {
         // Initialisation des colonnes avec des PropertyValueFactory
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         colPays.setCellValueFactory(new PropertyValueFactory<>("pays"));
         colRoles.setCellValueFactory(new PropertyValueFactory<>("roles"));
 
-        // Continuez à définir les PropertyValueFactory pour les autres colonnes
+
 
         loadUsers();
     }
