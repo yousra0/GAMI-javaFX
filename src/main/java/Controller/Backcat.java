@@ -28,20 +28,12 @@ import java.util.List;
 public class Backcat {
 
 
-
-    @FXML
-    private Button cataddBtn;
-
-    @FXML
-    private Button catclearBtn;
-
-    @FXML
-    private Button catdeleteBtn;
-
     @FXML
     private Button catjeuxbtn;
 
 
+    @FXML
+    private Containercategorie containercategorie; // Référence au contrôleur Containercategorie
 
     @FXML
     private Button catupdateBtn;
@@ -60,6 +52,7 @@ public class Backcat {
 
     @FXML
     private AnchorPane jeuxform;
+
 
 
 
@@ -128,6 +121,14 @@ public class Backcat {
 
 
     }
+    private void chargerValeursDeContainercategorie() {
+        if (containercategorie != null) {
+            String nomCat = containercategorie.getShowNameCat();
+            String descCat = containercategorie.getShowDescCat();
+            // Utilisez ces valeurs comme nécessaire dans Backcat
+        }
+    }
+
 
 
 
@@ -151,42 +152,27 @@ public class Backcat {
         tfnomcat.clear();
     }
 
-    @FXML
-    void modifcat(ActionEvent event) {
 
-    }
 
     @FXML
     void suppcat(ActionEvent event) {
-        if (categories!= null) {
-            System.out.println("Deleting Game: " + categories);
-            try {
-
-                sb.delete(categories.getId());
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Backcat.fxml"));
-                Parent root = loader.load();
-                GameShow gameShow = loader.getController();
 
 
-                // Get the current stage and set the new scene
-                Stage stage = (Stage) tfnomcat.getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
+String name = tfnomcat.getText();
 
-            } catch (SQLException e) {
-                e.printStackTrace();
+ Game_s gs = new Game_s();
 
-                // Handle any errors or exceptions
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            System.out.println("No Game selected.");
+CategorieJeux_s cj = new CategorieJeux_s();
+
+        try {
+            CategorieJeux c= cj.getByName(name);
+            gs.delete(c.getId());
+            cj.deleteByName(name);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
     }
-    private void loadCategorie() {
+    public void loadCategorie() {
         try {
             CategorieJeux_s tS = new CategorieJeux_s(conn);
             List<CategorieJeux> resL = tS.getAllCategories();
@@ -220,6 +206,18 @@ public class Backcat {
         alert.setContentText(message);
         alert.show();
     }
+    // Méthode pour afficher les données de la catégorie sélectionnée dans les champs de texte
+    // Méthode pour afficher les données de la catégorie sélectionnée dans les champs de texte
+    // Méthode pour afficher les données de la catégorie sélectionnée dans les champs de texte
+    public void showEditForm(CategorieJeux categorie) {
+        tfnomcat.setText(categorie.getNomCat());
+        tfdesccat.setText(categorie.getDescription());
+        // Passer la catégorie sélectionnée au Containercategorie pour l'édition
+        containercategorie.setCategorie(categorie);
+    }
+
+
+
 
 
 

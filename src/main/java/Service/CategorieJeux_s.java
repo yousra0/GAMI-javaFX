@@ -2,6 +2,7 @@ package Service;
 
 import Entity.CategorieJeux;
 import Entity.Game;
+import Outil.DataBase;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -11,8 +12,10 @@ import java.util.List;
 
 
 public class CategorieJeux_s implements Services<CategorieJeux> {
+    Connection cnx = DataBase.getInstance().getConn();
 
-  Connection cnx;
+
+
     public CategorieJeux_s(Connection cnx)
     {
         this.cnx = cnx;
@@ -71,21 +74,22 @@ public class CategorieJeux_s implements Services<CategorieJeux> {
             System.out.println("Categorie supprimer avec success");
         }
     }
-    public void edit(CategorieJeux c) throws SQLException
-    {
-        String sql = "UPDATE `categorie` SET `id`=?,`name`=?,`description`=? WHERE id = ? ";
-        try (PreparedStatement pstm = cnx.prepareStatement(sql))
-        {
-            pstm.setInt(1, c.getId());  // Set the ID parameter
-            pstm.setString(2, c.getNomCat());
-            pstm.setString(3, c.getDescription());
+    @Override
+    public void edit(CategorieJeux c) throws SQLException {
+        String sql = "UPDATE `categorie` SET `name`=?, `description`=? WHERE `id` = ?";
+        try (PreparedStatement pstm = cnx.prepareStatement(sql)) {
+            pstm.setString(1, c.getNomCat());
+            pstm.setString(2, c.getDescription());
+            pstm.setInt(3, c.getId());
             pstm.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error while editing categorie: " + e.getMessage());
+            System.out.println("Error while editing category: " + e.getMessage());
             throw e;
         }
     }
+
     public void deleteByName(String name) throws SQLException {
+
         String query = "DELETE FROM categorie WHERE name = ?";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
             preparedStatement.setString(1, name);

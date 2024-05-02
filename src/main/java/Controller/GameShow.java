@@ -106,7 +106,7 @@ public class GameShow {
         void again(ActionEvent event) throws IOException {
             catView = true;
 
-            Parent root = FXMLLoader.load(getClass().getResource("/showGame2.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Backcat.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

@@ -27,8 +27,6 @@ public class Containergame {
     @FXML
     private Label nameTF;
 
-    @FXML
-    private Label note;
     private Game games;
     @FXML
     private Label lienTF;
@@ -41,36 +39,7 @@ public class Containergame {
         imagev.setImage(img);
         lienTF.setText(g.getLien());
     }
-    @FXML
-    void delete(ActionEvent event) {
-        if (games!= null) {
-            System.out.println("Deleting Game: " + games.toString());
-            try {
 
-                gamesS.delete(games.getId());
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/showGame2.fxml"));
-                Parent root = loader.load();
-                GameShow gameShow = loader.getController();
-
-
-                // Get the current stage and set the new scene
-                Stage stage = (Stage) nameTF.getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-
-                // Handle any errors or exceptions
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            System.out.println("No Game selected.");
-        }
-
-    }
     private WebEngine engine;
 
     @FXML

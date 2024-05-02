@@ -161,10 +161,9 @@
                                     <TextField fx:id="tfnomcat" layoutX="282.0" layoutY="401.0" prefHeight="25.0" prefWidth="172.0" styleClass="textfield" stylesheets="@dashboardDesign.css" />
                                     
                                     <TextField fx:id="tfid" layoutX="423.0" layoutY="400.0" prefHeight="25.0" prefWidth="172.0" styleClass="textfield" stylesheets="@dashboardDesign.css" visible="false" />
-                                    <Button fx:id="cataddBtn" layoutX="696.0" layoutY="488.0" mnemonicParsing="false" onAction="#addcat" prefHeight="41.0" prefWidth="94.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
-                                    <Button fx:id="catupdateBtn" layoutX="570.0" layoutY="488.0" mnemonicParsing="false" onAction="#modifcat" prefHeight="41.0" prefWidth="94.0" styleClass="update-btn" stylesheets="@dashboardDesign.css" text="Modifier" />
-                                    <Button fx:id="catdeleteBtn" layoutX="435.0" layoutY="488.0" mnemonicParsing="false" onAction="#suppcat" prefHeight="41.0" prefWidth="94.0" styleClass="delete-btn" stylesheets="@dashboardDesign.css" text="Supprimer" />
-                                    <Button fx:id="catclearBtn" layoutX="308.0" layoutY="488.0" mnemonicParsing="false" onAction="#empty" prefHeight="41.0" prefWidth="94.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Annuler" />
+                                    <Button layoutX="696.0" layoutY="488.0" mnemonicParsing="false" onAction="#addcat" prefHeight="41.0" prefWidth="94.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+                                    <Button layoutX="564.0" layoutY="488.0" mnemonicParsing="false" onAction="#suppcat" prefHeight="41.0" prefWidth="94.0" styleClass="delete-btn" stylesheets="@dashboardDesign.css" text="Supprimer" />
+                                    <Button layoutX="436.0" layoutY="488.0" mnemonicParsing="false" onAction="#empty" prefHeight="41.0" prefWidth="94.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Annuler" />
                                     <Label fx:id="errormsg" layoutY="659.0" text="Label" textFill="#ff0900" />
                                     <Label layoutX="472.0" layoutY="403.0" text="Description:">
                                        <font>

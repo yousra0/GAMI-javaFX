@@ -111,7 +111,7 @@ public class AfficherGame {
         stage.close(); // Fermer la fenêtre actuelle
 
         // Ouvrir la page showGame.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/showGame2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Backgame.fxml"));
         try {
             Parent root = loader.load();
             Stage aa = new Stage();

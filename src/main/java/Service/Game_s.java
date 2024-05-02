@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 
 public class Game_s implements Services<Game> {
-    Connection cnx;
+    Connection cnx=DataBase.getInstance().getConn();
     public Game_s(Connection cnx) {
         this.cnx = cnx;
     }

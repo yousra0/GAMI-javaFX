@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -29,6 +30,13 @@ public class ContainergameBack {
     private Game games;
     private final Connection conn = DataBase.getInstance().getConn();
     private final Game_s gamesS = new Game_s(conn);
+    public void setTournois(Game g) {
+        this.games = g;
+        nameTF.setText(g.getName());
+        Image img = new Image("file:" + g.getImage());
+        imagev.setImage(img);
+        lienTF.setText(g.getLien());
+    }
 
     @FXML
     void delete(ActionEvent event) {
@@ -38,9 +46,9 @@ public class ContainergameBack {
 
                 gamesS.delete(games.getId());
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/showGame2.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Backgame.fxml"));
                 Parent root = loader.load();
-                GameShow gameShow = loader.getController();
+                Backgame gameShow = loader.getController();
 
 
                 // Get the current stage and set the new scene
@@ -62,7 +70,8 @@ public class ContainergameBack {
     }
 
     @FXML
-    void edit(ActionEvent event) {
+    void edit(ActionEvent event) throws IOException
+    {
 
     }
 
