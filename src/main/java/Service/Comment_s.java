@@ -76,29 +76,6 @@ public class Comment_s implements Services <Comment>
             throw e;
         }
     }
-    public List<Comment> getAllCommentairesByPostId(int postId)
-    {
-        List<Comment> comments = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM comment WHERE post_id = ?";
-            PreparedStatement ps = this.cnx.prepareStatement(sql);
-            ps.setInt(1, postId);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String contenu_comment = rs.getString("contenu_comment");
-                String date_comment = rs.getString("date_comment");
-                Post post = getPostById(postId);
-                Comment c = new Comment(id, contenu_comment, date_comment, post);
-                comments.add(c);
-            }
-            rs.close();
-            ps.close();
-        } catch (SQLException var15) {
-            var15.printStackTrace();
-        }
-        return comments;
-    }
     private Post getPostById(int id)
     {
         Post post = null;

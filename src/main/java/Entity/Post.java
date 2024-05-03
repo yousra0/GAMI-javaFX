@@ -1,7 +1,7 @@
 package Entity;
 
 import java.util.ArrayList;
-import java.util.Date; // Ajout de l'import pour java.util.Date
+import java.util.Date;
 import java.util.List;
 
 public class Post
@@ -9,7 +9,7 @@ public class Post
     private int id;
     private String titre;
     private String contenu_pub;
-    private Date date_pub; // Modification du type de la propriété date_pub
+    private Date date_pub;
     private String file;
     private int likes;
     private int dislikes;
@@ -43,7 +43,6 @@ public class Post
         this.dislikes = dislikes;
         this.comments = new ArrayList<>();
     }
-
 
     public int getId() {
         return id;
