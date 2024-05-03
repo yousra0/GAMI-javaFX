@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="559.0" style="-fx-background-color: #27292A; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterPost">
+<AnchorPane prefHeight="625.0" prefWidth="604.0" style="-fx-background-color: #27292A; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterPost">
    <children>
-      <Pane layoutX="103.0" layoutY="14.0" prefHeight="59.0" prefWidth="353.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
+      <Pane layoutX="124.0" layoutY="14.0" prefHeight="59.0" prefWidth="353.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
          <children>
             <Label layoutX="37.0" layoutY="12.0" style="-fx-font-weight: bold;" text="Ajouter une publication" textFill="WHITE">
                <font>
@@ -19,7 +19,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="38.0" layoutY="89.0" prefHeight="299.0" prefWidth="483.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
+      <Pane layoutX="38.0" layoutY="89.0" prefHeight="502.0" prefWidth="526.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
          <children>
             <Label layoutX="10.0" layoutY="23.0" prefHeight="30.0" prefWidth="88.0" style="-fx-font-weight: bold;" text="Titre" textFill="WHITE">
                <font>
@@ -46,35 +46,27 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="titreTextField" layoutX="263.0" layoutY="14.0" prefHeight="38.0" prefWidth="200.0" style="-fx-background-radius: 5;" />
-            <TextField fx:id="contenuTextField" layoutX="262.0" layoutY="72.0" prefHeight="38.0" prefWidth="200.0" style="-fx-background-radius: 5;" />
-            <TextField fx:id="fichierTextField" layoutX="263.0" layoutY="131.0" prefHeight="38.0" prefWidth="200.0" style="-fx-background-radius: 5;" />
-            <TextField fx:id="likesTextField" layoutX="263.0" layoutY="187.0" prefHeight="38.0" prefWidth="200.0" style="-fx-background-radius: 5;" />
-            <TextField fx:id="dislikesTextField" layoutX="263.0" layoutY="245.0" prefHeight="38.0" prefWidth="200.0" style="-fx-background-radius: 5;" />
-         </children>
-      </Pane>
-      <Pane layoutX="324.0" layoutY="408.0" prefHeight="158.0" prefWidth="200.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
-         <children>
-            <Button layoutX="24.0" layoutY="108.0" mnemonicParsing="false" onAction="#ajouterPost" prefHeight="38.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-background-color: #4C3442;" text="Ajouter Post" textFill="WHITE">
+            <TextField fx:id="titreTextField" layoutX="263.0" layoutY="14.0" prefHeight="38.0" prefWidth="242.0" style="-fx-background-radius: 5;" />
+            <TextField fx:id="contenuTextField" layoutX="262.0" layoutY="72.0" prefHeight="38.0" prefWidth="242.0" style="-fx-background-radius: 5;" />
+            <TextField fx:id="fichierTextField" layoutX="263.0" layoutY="131.0" prefHeight="38.0" prefWidth="242.0" style="-fx-background-radius: 5;" />
+            <TextField fx:id="likesTextField" layoutX="263.0" layoutY="187.0" prefHeight="38.0" prefWidth="242.0" style="-fx-background-radius: 5;" />
+            <TextField fx:id="dislikesTextField" layoutX="263.0" layoutY="245.0" prefHeight="38.0" prefWidth="242.0" style="-fx-background-radius: 5;" />
+            <ImageView fx:id="imageviewFile" fitHeight="162.0" fitWidth="295.0" layoutX="14.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="354.0" layoutY="418.0" mnemonicParsing="false" onAction="#ajouterPost" prefHeight="38.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-background-color: #4C3442;" text="Ajouter Post" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="24.0" layoutY="13.0" mnemonicParsing="false" onAction="#navigateToMusicPlayer" prefHeight="38.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-background-color: #4C3442;" text="Music Player" textAlignment="JUSTIFY" textFill="WHITE">
+            <Button layoutX="354.0" layoutY="323.0" mnemonicParsing="false" onAction="#navigateToAfficherPost" prefHeight="38.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-background-color: #4C3442;" text="Back" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="24.0" layoutY="60.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="38.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-background-color: #4C3442;" text="Choisir Image" textFill="WHITE">
+            <Button layoutX="354.0" layoutY="370.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="38.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-background-color: #4C3442;" text="Choisir Image" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-         </children>
-      </Pane>
-      <Pane layoutX="40.0" layoutY="408.0" prefHeight="158.0" prefWidth="272.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
-         <children>
-            <ImageView fx:id="imageviewFile" fitHeight="139.0" fitWidth="243.0" layoutX="15.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

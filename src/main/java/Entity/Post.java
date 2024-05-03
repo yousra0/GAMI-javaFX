@@ -44,6 +44,7 @@ public class Post
         this.comments = new ArrayList<>();
     }
 
+
     public int getId() {
         return id;
     }

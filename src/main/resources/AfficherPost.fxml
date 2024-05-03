@@ -30,7 +30,7 @@
                         <HBox layoutX="62.0" prefHeight="44.0" prefWidth="56.0" />
                         <TextField fx:id="searchTextField" layoutX="278.0" layoutY="15.0" prefHeight="44.0" prefWidth="529.0" promptText="rechercher sur GAMI..." style="-fx-background-radius: 10; -fx-font-weight: bold;" />
                         <HBox layoutX="278.0" prefHeight="44.0" prefWidth="56.0" />
-                        <Button layoutX="887.0" layoutY="14.0" mnemonicParsing="false" onAction="#retournerAajouterPost" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #E75E8D; -fx-background-radius: 10; -fx-font-weight: bold;" text="🠔" textAlignment="JUSTIFY">
+                        <Button layoutX="887.0" layoutY="14.0" mnemonicParsing="false" onAction="#retournerAmenu" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #E75E8D; -fx-background-radius: 10; -fx-font-weight: bold;" text="🠔" textAlignment="JUSTIFY">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -86,7 +86,8 @@
                                     <TextArea fx:id="titreTextArea" editable="false" layoutX="70.0" layoutY="35.0" prefHeight="38.0" prefWidth="366.0" style="-fx-background-radius: 10;" />
                                     <TextField fx:id="fichierTextField" layoutX="198.0" layoutY="243.0" prefHeight="20.0" prefWidth="0.0" />
                                     <ImageView fx:id="imageviewFile" fitHeight="202.0" fitWidth="365.0" layoutX="70.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
-                                    <MFXButton buttonType="RAISED" layoutX="71.0" layoutY="473.0" onAction="#supprimerCommentaire" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: #e36f5f; -fx-font-weight: bold;" text="Supprimer commentaire" />
+                                    <MFXButton buttonType="RAISED" layoutX="71.0" layoutY="473.0" onAction="#supprimerCommentaire" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #e36f5f; -fx-font-weight: bold;" text="Supprimer commentaire" />
+                                    <MFXButton buttonType="RAISED" layoutX="160.0" layoutY="473.0" onAction="#modifierCommentaire" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #e36f5f; -fx-font-weight: bold;" text="modifier commentaire" />
 
                                  </children></Pane>
                            </children>

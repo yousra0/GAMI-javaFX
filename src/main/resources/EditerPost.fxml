@@ -2,22 +2,72 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #b0acaf;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditerPost">
+<AnchorPane prefHeight="690.0" prefWidth="654.0" style="-fx-background-color: #27292A; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditerPost">
    <children>
-      <TextField fx:id="titreTextField" layoutX="25.0" layoutY="32.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <TextField fx:id="contenuTextField" layoutX="25.0" layoutY="84.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <MFXDatePicker fx:id="dateTextField" layoutX="430.0" layoutY="84.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <TextField fx:id="fichierTextField" layoutX="226.0" layoutY="32.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <TextField fx:id="likesTextField" layoutX="225.0" layoutY="84.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <TextField fx:id="dislikesTextField" layoutX="430.0" layoutY="32.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <ImageView fx:id="imageviewFile" fitHeight="187.0" fitWidth="343.0" layoutX="47.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="492.0" layoutY="339.0" mnemonicParsing="false" onAction="#retournerAAfficherPost" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #c9adde; -fx-font-weight: bold;" text="Back" />
-      <Button layoutX="492.0" layoutY="303.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #70c29a; -fx-font-weight: bold;" text="Save" />
-      <Button fx:id="chargerImageButton" layoutX="478.0" layoutY="247.0" mnemonicParsing="false" onAction="#chargerImage" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #E75E8D; -fx-font-weight: bold;" text="Charger Image" textFill="WHITE" />
+      <Pane layoutX="51.0" layoutY="100.0" prefHeight="568.0" prefWidth="552.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
+         <children>
+            <TextField fx:id="titreTextField" layoutX="228.0" layoutY="29.0" prefHeight="38.0" prefWidth="297.0" style="-fx-background-radius: 10;" />
+            <TextField fx:id="contenuTextField" layoutX="228.0" layoutY="87.0" prefHeight="38.0" prefWidth="297.0" style="-fx-background-radius: 10;" />
+            <TextField fx:id="fichierTextField" layoutX="228.0" layoutY="141.0" prefHeight="38.0" prefWidth="297.0" style="-fx-background-radius: 10;" />
+            <TextField fx:id="likesTextField" layoutX="228.0" layoutY="197.0" prefHeight="38.0" prefWidth="297.0" style="-fx-background-radius: 10;" />
+            <MFXDatePicker fx:id="dateTextField" layoutX="228.0" layoutY="318.0" prefHeight="38.0" prefWidth="297.0" style="-fx-background-radius: 10;" />
+            <TextField fx:id="dislikesTextField" layoutX="228.0" layoutY="255.0" prefHeight="38.0" prefWidth="297.0" style="-fx-background-radius: 10;" />
+            <ImageView fx:id="imageviewFile" fitHeight="187.0" fitWidth="343.0" layoutX="11.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="chargerImageButton" layoutX="378.0" layoutY="426.0" mnemonicParsing="false" onAction="#chargerImage" prefHeight="38.0" prefWidth="142.0" style="-fx-background-color: #4C3442; -fx-font-weight: bold;" text="Charger Image" textFill="WHITE" />
+            <Button layoutX="378.0" layoutY="479.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="38.0" prefWidth="142.0" style="-fx-background-color: #70c29a; -fx-font-weight: bold;" text="Save" />
+            <Label layoutX="20.0" layoutY="33.0" prefHeight="30.0" prefWidth="88.0" style="-fx-font-weight: bold;" text="Titre" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="91.0" prefHeight="30.0" prefWidth="150.0" style="-fx-font-weight: bold;" text="Contenu" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="145.0" prefHeight="20.0" prefWidth="88.0" style="-fx-font-weight: bold;" text="Fichier" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="201.0" prefHeight="20.0" prefWidth="109.0" style="-fx-font-weight: bold;" text="Likes" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="259.0" prefHeight="20.0" prefWidth="103.0" style="-fx-font-weight: bold;" text="Dislikes" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="322.0" prefHeight="20.0" prefWidth="103.0" style="-fx-font-weight: bold;" text="Dislikes" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="150.0" layoutY="20.0" prefHeight="59.0" prefWidth="353.0" style="-fx-background-color: #EC6090; -fx-background-radius: 15;">
+         <children>
+            <Label layoutX="66.0" layoutY="12.0" style="-fx-font-weight: bold;" text="Editer vos données" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="51.0" layoutY="27.0" mnemonicParsing="false" onAction="#retournerAAfficherPost" prefHeight="36.0" prefWidth="49.0" style="-fx-background-color: #EC6090; -fx-font-weight: bold;" text="🠔">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
 
    </children>
 </AnchorPane>

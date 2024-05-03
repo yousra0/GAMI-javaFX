@@ -170,10 +170,10 @@ public class AjouterPost
         }
     }
     @FXML
-    private void navigateToMusicPlayer(ActionEvent event)
+    private void navigateToAfficherPost(ActionEvent event)
     {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/music-player.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPost.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

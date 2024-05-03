@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -106,13 +107,13 @@ public class AfficherPost
     }
     
     @FXML
-    private void retournerAajouterPost()
+    private void retournerAmenu()
     {
         Stage stage = (Stage) titreTextField.getScene().getWindow(); // Récupérer la fenêtre actuelle
         stage.close(); // Fermer la fenêtre actuelle
 
         // Ouvrir la page AjouterPost.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPost.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu.fxml"));
         try {
             Parent root = loader.load();
             Stage ajouterPostStage = new Stage();
@@ -178,7 +179,7 @@ public class AfficherPost
         {
             // Récupérer le post à éditer à partir du titre
             Post selectedPost = postService.getByTitre(selectedPostTitle);
-            editerPost.setPost(selectedPost); // Make sure selectedPost is initialized
+            editerPost.setPost(selectedPost); // Make sure selectedPost is initialized/
         }
         catch (SQLException e)
         {
@@ -239,89 +240,6 @@ public class AfficherPost
         }
     }
     @FXML
-    private void exporterEnPDF(ActionEvent event) {
-        Document document = new Document();
-
-        try {
-            // Générer un nom de fichier unique
-            String fileName = "export_" + System.currentTimeMillis() + ".pdf";
-
-            // Chemin d'accès où le fichier PDF sera enregistré
-            String pathToSave = System.getProperty("user.home") + File.separator + "Documents" + File.separator + fileName;
-            PdfWriter.getInstance(document, new FileOutputStream(pathToSave));
-
-            document.open();
-
-            // Ajouter un titre au document
-            Paragraph title = new Paragraph("Détails du Post");
-            title.setAlignment(Element.ALIGN_CENTER);
-            document.add(title);
-
-            // Créer un tableau pour les données du post
-            PdfPTable table = new PdfPTable(2);
-            table.setWidthPercentage(100);
-
-            // Ajouter les cellules du tableau avec les données du post
-            table.addCell("Titre");
-            table.addCell(titreTextField.getText());
-
-            table.addCell("Contenu");
-            table.addCell(contenuTextField.getText());
-
-            table.addCell("Date");
-            table.addCell(dateTextField.getText());
-
-            table.addCell("Fichier");
-            table.addCell(fichierTextField.getText());
-
-            table.addCell("Likes");
-            table.addCell(likesTextField.getText());
-
-            table.addCell("Dislikes");
-            table.addCell(dislikesTextField.getText());
-
-            // Ajouter le tableau au document
-            document.add(table);
-
-            // Charger l'image à partir du fichier spécifié dans fichierTextField
-            File imageFile = new File(fichierTextField.getText());
-            if (imageFile.exists()) {
-                Image image = new Image(imageFile.toURI().toString());
-
-                // Convertir l'image JavaFX en tableau de bytes
-                BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                ImageIO.write(bImage, "png", outputStream);
-                byte[] imageBytes = outputStream.toByteArray();
-
-                // Ajouter l'image au document PDF
-                com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(imageBytes);
-                document.add(pdfImage);
-            }
-
-            document.close();
-            afficherInformation("Les données ont été exportées en PDF avec succès.");
-        } catch (IOException | DocumentException e) {
-            afficherErreur("Une erreur s'est produite lors de l'exportation en PDF : " + e.getMessage());
-        }
-    }
-
-
-    @FXML
-    void openMap(ActionEvent event)
-    {
-        Stage stage = new Stage();
-        GluonMapExample mapExample = new GluonMapExample();
-        mapExample.start(stage);
-
-        Node node = (Node) event.getSource(); // Récupère le Node déclenchant l'événement
-        Scene scene = node.getScene(); // Récupère la scène à partir du Node
-        MapView mapView = (MapView) scene.lookup("#mapView"); // Remplacez "mapView" par l'ID de votre MapView
-        MapPoint espritLocation = new MapPoint(36.89830009644064, 10.186927429895055);
-        CustomCircleMarkerLayer markerLayer = new CustomCircleMarkerLayer(espritLocation);
-        mapView.addLayer(markerLayer);
-    }
-    @FXML
     public void add(ActionEvent actionEvent)
     {
         Stage stage = (Stage) titreTextField.getScene().getWindow(); // Récupérer la fenêtre actuelle
@@ -339,36 +257,40 @@ public class AfficherPost
         }
     }
     private String filterInappropriateWords(String comment) {
-        // Liste de mots inappropriés à remplacer
+        // List of inappropriate words to replace
         List<String> inappropriateWords = Arrays.asList("fuck", "shit", "hell");
-        // Remplacer les mots inappropriés par des astérisques
+
+        // Replace inappropriate words with asterisks
         for (String word : inappropriateWords) {
-            comment = comment.replaceAll(word, "*".repeat(word.length()));
+            // Use regex to match whole words and ignore case
+            comment = comment.replaceAll("(?i)\\b" + word + "\\b", "*".repeat(word.length()));
         }
         return comment;
     }
     @FXML
-    private void addComment(ActionEvent event)
-    {
+    private void addComment(ActionEvent event) {
         // Récupérer le titre du post sélectionné
         String titrePost = selectedPostTitle;
-        if (titrePost != null && !titrePost.isEmpty())
-        {
+        if (titrePost != null && !titrePost.isEmpty()) {
             // Vérifier si le champ de commentaire n'est pas vide
-            if (commentTextField.getText().isEmpty())
-            {
+            if (commentTextField.getText().isEmpty()) {
                 afficherErreur("Veuillez saisir un commentaire.");
                 return;
             }
-            try
-            {
+            try {
                 // Récupérer le post à partir du titre
                 Post post = postService.getByTitre(titrePost);
-                // Créer un nouveau commentaire à partir du texte saisi dans le champ de texte
+
+                // Filtrer les mots inappropriés dans le commentaire
+                String commentaire = filterInappropriateWords(commentTextField.getText());
+
+                // Créer un nouveau commentaire à partir du texte filtré
                 Comment nouveauCommentaire = new Comment();
-                nouveauCommentaire.setContenu_comment(commentTextField.getText());
+                nouveauCommentaire.setContenu_comment(commentaire);
+
                 // Associer le commentaire au post sélectionné
                 nouveauCommentaire.setPost_id(post.getId());
+
                 // Ajouter le commentaire à la base de données
                 postService.addComment(post, nouveauCommentaire);
 
@@ -381,54 +303,17 @@ public class AfficherPost
                 afficherInformation("Le commentaire a été ajouté avec succès.");
                 // Effacer le champ de texte du commentaire après l'ajout
                 commentTextField.clear();
-            }
-            catch (SQLException e)
-            {
+            } catch (SQLException e) {
                 afficherErreur("Une erreur s'est produite lors de l'ajout du commentaire : " + e.getMessage());
             }
-        }
-        else
-        {
+        } else {
             afficherErreur("Veuillez sélectionner un post.");
         }
     }
-
     private void selectPost(String titre)
     {
         selectedPostTitle = titre;
         // Mettez en surbrillance visuellement le bouton sélectionné si nécessaire
-    }
-    public void search(ActionEvent event) {
-        String searchText = searchTextField.getText().toLowerCase();
-
-        for (String titre : titresPosts) {
-            if (titre.toLowerCase().contains(searchText)) {
-                try {
-                    Post selectedPost = postService.getByTitre(titre);
-                    setTitreTextField(selectedPost.getTitre());
-                    setContenuTextField(selectedPost.getContenu_pub());
-                    setDateTextField(selectedPost.getDate_pub().toString()); // Adaptation pour afficher la date
-                    setFichierTextField(selectedPost.getFile());
-                    setLikesTextField(selectedPost.getLikes());
-                    setDislikesTextField(selectedPost.getDislikes());
-                    // Charger l'image à partir du fichier
-                    File file = new File(selectedPost.getFile());
-                    if (file.exists()) {
-                        Image image = new Image(file.toURI().toString());
-                        setImage(image);
-                    } else {
-                        // Gérer le cas où le fichier image n'existe pas
-                        setImage(null);
-                    }
-                    selectPost(selectedPost.getTitre());
-                    return; // Sortir de la boucle si un post correspondant est trouvé
-                } catch (SQLException e) {
-                    afficherErreur("Une erreur s'est produite lors de la récupération des détails du post : " + e.getMessage());
-                }
-            }
-        }
-
-        afficherErreur("Aucun post correspondant n'a été trouvé.");
     }
     @FXML
     public void initialize() {
@@ -517,5 +402,98 @@ public class AfficherPost
             currentIndex--;
             afficherPostCourant();
         }
+    }
+    public void search(ActionEvent event) {
+        String searchText = searchTextField.getText().toLowerCase();
+
+        for (String titre : titresPosts) {
+            if (titre.toLowerCase().contains(searchText)) {
+                try {
+                    Post selectedPost = postService.getByTitre(titre);
+                    setTitreTextField(selectedPost.getTitre());
+                    setContenuTextField(selectedPost.getContenu_pub());
+                    setDateTextField(selectedPost.getDate_pub().toString()); // Adaptation pour afficher la date
+                    setFichierTextField(selectedPost.getFile());
+                    setLikesTextField(selectedPost.getLikes());
+                    setDislikesTextField(selectedPost.getDislikes());
+                    // Charger l'image à partir du fichier
+                    File file = new File(selectedPost.getFile());
+                    if (file.exists()) {
+                        Image image = new Image(file.toURI().toString());
+                        setImage(image);
+                    } else {
+                        // Gérer le cas où le fichier image n'existe pas
+                        setImage(null);
+                    }
+                    selectPost(selectedPost.getTitre());
+                    return; // Sortir de la boucle si un post correspondant est trouvé
+                } catch (SQLException e) {
+                    afficherErreur("Une erreur s'est produite lors de la récupération des détails du post : " + e.getMessage());
+                }
+            }
+        }
+
+        afficherErreur("Aucun post correspondant n'a été trouvé.");
+    }
+    @FXML
+    private void exporterEnPDF(ActionEvent event) {
+        Document document = new Document();
+        try {
+            String fileName = "export_" + System.currentTimeMillis() + ".pdf";
+            String pathToSave = System.getProperty("user.home") + File.separator + "Documents" + File.separator + fileName;
+            PdfWriter.getInstance(document, new FileOutputStream(pathToSave));
+            document.open();
+            Paragraph title = new Paragraph("Détails du Post");
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+            PdfPTable table = new PdfPTable(2);
+            table.setWidthPercentage(100);
+            // Ajouter les données au tableau
+            addDataToTable(table, "Titre", titreTextField.getText());
+            addDataToTable(table, "Contenu", contenuTextField.getText());
+            addDataToTable(table, "Date", dateTextField.getText());
+            addDataToTable(table, "Fichier", fichierTextField.getText());
+            addDataToTable(table, "Likes", likesTextField.getText());
+            addDataToTable(table, "Dislikes", dislikesTextField.getText());
+            document.add(table);
+            // Ajouter l'image au document
+            addImageToDocument(document);
+            document.close();
+            afficherInformation("Les données ont été exportées en PDF avec succès.");
+        } catch (IOException | DocumentException e) {
+            afficherErreur("Une erreur s'est produite lors de l'exportation en PDF : " + e.getMessage());
+        }
+    }
+    private void addDataToTable(PdfPTable table, String key, String value) {
+        table.addCell(key);
+        table.addCell(value);
+    }
+    private void addImageToDocument(Document document) throws IOException, DocumentException {
+        File imageFile = new File(fichierTextField.getText());
+        if (imageFile.exists()) {
+            Image image = new Image(imageFile.toURI().toString());
+            BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            ImageIO.write(bImage, "png", outputStream);
+            byte[] imageBytes = outputStream.toByteArray();
+            com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(imageBytes);
+            document.add(pdfImage);
+        }
+    }
+    @FXML
+    void openMap(ActionEvent event)
+    {
+        Stage stage = new Stage();
+        GluonMapExample mapExample = new GluonMapExample();
+        mapExample.start(stage);
+
+        Node node = (Node) event.getSource(); // Récupère le Node déclenchant l'événement
+        Scene scene = node.getScene(); // Récupère la scène à partir du Node
+        MapView mapView = (MapView) scene.lookup("#mapView"); // Remplacez "mapView" par l'ID de votre MapView
+        MapPoint espritLocation = new MapPoint(36.89830009644064, 10.186927429895055);
+        CustomCircleMarkerLayer markerLayer = new CustomCircleMarkerLayer(espritLocation);
+        mapView.addLayer(markerLayer);
+    }
+    public void modifierCommentaire(ActionEvent actionEvent) {
     }
 }
