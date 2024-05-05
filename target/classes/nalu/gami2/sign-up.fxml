@@ -6,56 +6,234 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.SignUpController">
-    <padding>
-        <Insets bottom="10" left="25" right="25" top="25" />
-    </padding>
-    <!-- Form Input Fields -->
-    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-    <Label text="Mot de passe :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-    <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-    <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-    <Label text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-    <Label text="Pays:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-    <TextField fx:id="paysField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-    <Label text="Date de Naissance (AAAA-MM-JJ):" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-
-    <Label text="Photo de profile  :" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-
-    <!-- Buttons -->
-    <Button onAction="#handleSignUp" text="S'inscrire" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-    <Button onAction="#handleGoToSignIn" text="Déjà j'ai un compte , connexion !" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-   <Button mnemonicParsing="false" onAction="#chooseFile" text="choisir une image " GridPane.columnIndex="1" GridPane.rowIndex="6">
-      <GridPane.margin>
-         <Insets />
-      </GridPane.margin>
-   </Button>
-   <DatePicker fx:id="picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-</GridPane>
+<AnchorPane prefHeight="583.0" prefWidth="728.0" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.SignUpController">
+   <children>
+      <GridPane alignment="CENTER" hgap="10" layoutY="81.0" prefHeight="514.0" prefWidth="778.0" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, reflect, #49dcc1 0.0%, #000000 100.0%);" vgap="10">
+          <padding>
+              <Insets bottom="10" left="25" right="25" top="25" />
+          </padding>
+          <!-- Form Input Fields -->
+          <Label text="Email:">
+            <font>
+               <Font name="Britannic Bold" size="20.0" />
+            </font>
+            <textFill>
+               <RadialGradient centerX="0.5" centerY="0.3863636724876635" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.2877193093299866" green="0.8631578683853149" blue="0.7576608061790466" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </textFill>
+         </Label>
+          <TextField fx:id="emailField" GridPane.columnIndex="1" />
+      
+          <Label text="Password:" GridPane.rowIndex="1">
+            <font>
+               <Font name="Britannic Bold" size="20.0" />
+            </font>
+            <textFill>
+               <RadialGradient centerX="0.5" centerY="0.3863636724876635" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.2877193093299866" green="0.8631578683853149" blue="0.7576608061790466" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </textFill>
+         </Label>
+          <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      
+          <Label text="Nom:" GridPane.rowIndex="2">
+            <font>
+               <Font name="Britannic Bold" size="20.0" />
+            </font>
+            <textFill>
+               <RadialGradient centerX="0.5" centerY="0.3863636724876635" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.2877193093299866" green="0.8631578683853149" blue="0.7576608061790466" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </textFill>
+         </Label>
+          <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      
+          <Label text="Prénom:" GridPane.rowIndex="3">
+            <font>
+               <Font name="Britannic Bold" size="20.0" />
+            </font>
+            <textFill>
+               <RadialGradient centerX="0.5" centerY="0.3863636724876635" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.2877193093299866" green="0.8631578683853149" blue="0.7576608061790466" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </textFill>
+         </Label>
+          <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      
+          <Label text="Pays:" GridPane.rowIndex="4">
+            <font>
+               <Font name="Britannic Bold" size="20.0" />
+            </font>
+            <textFill>
+               <RadialGradient centerX="0.5" centerY="0.3863636724876635" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.2877193093299866" green="0.8631578683853149" blue="0.7576608061790466" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </textFill>
+         </Label>
+          <TextField fx:id="paysField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      
+          <Label text="Date de Naissance (AAAA-MM-JJ):" GridPane.rowIndex="5">
+            <font>
+               <Font name="Britannic Bold" size="20.0" />
+            </font>
+            <textFill>
+               <RadialGradient centerX="0.5" centerY="0.3863636724876635" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.2877193093299866" green="0.8631578683853149" blue="0.7576608061790466" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </textFill>
+         </Label>
+      
+          <Label text="Profil Photo :" GridPane.rowIndex="6">
+            <font>
+               <Font name="Britannic Bold" size="20.0" />
+            </font>
+            <textFill>
+               <RadialGradient centerX="0.5" centerY="0.3863636724876635" radius="0.5">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.2877193093299866" green="0.8631578683853149" blue="0.7576608061790466" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </RadialGradient>
+            </textFill>
+         </Label>
+      
+          <!-- Buttons -->
+          <Button onAction="#handleSignUp" prefHeight="26.0" prefWidth="191.0" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%);" text="Sign Up" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <font>
+               <Font name="System Bold" size="19.0" />
+            </font>
+         </Button>
+          <Button onAction="#handleGoToSignIn" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%);" text="Already have an account? Sign in" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <font>
+               <Font name="System Bold" size="19.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#chooseFile" prefHeight="26.0" prefWidth="191.0" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%)radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #ff0000 100.0%);" text="Select an image" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            <font>
+               <Font name="System Bold" size="19.0" />
+            </font>
+         </Button>
+         <DatePicker fx:id="picker" prefHeight="26.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+      <Label layoutX="59.0" layoutY="7.0" prefHeight="50.0" prefWidth="180.0" text="Bienvenu !" textAlignment="CENTER">
+         <font>
+            <Font name="Britannic Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="239.0" layoutY="46.0" text="Ne ratez pas l'occasion ... " textFill="#fcf9f9">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="82.0" fitWidth="129.0" layoutX="602.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

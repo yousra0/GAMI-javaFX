@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.Color?>
@@ -17,16 +19,100 @@
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="450.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="emailField" layoutX="101.0" layoutY="202.0" promptText="Email adress" style="-fx-background-color: transparent; -fx-border-color: #273b40; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="passwordField" layoutX="101.0" layoutY="255.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #273b40; -fx-border-width: 0px 0px 2px 0px;" />
-            <FontAwesomeIcon fill="#273b40" glyphName="USER" layoutX="64.0" layoutY="226.0" size="20" />
-            <FontAwesomeIcon fill="#273b40" glyphName="KEY" layoutX="63.0" layoutY="279.0" size="20" />
-            <Button fx:id="signInButton" layoutX="135.0" layoutY="327.0" mnemonicParsing="false" onAction="#signin" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #273b40;" text="Login" textFill="WHITE" />
-            <FontAwesomeIcon fill="#273b40" glyphName="USERS" layoutX="154.0" layoutY="120.0" size="40" />
-            <Text layoutX="121.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
+            <TextField fx:id="emailField" layoutX="101.0" layoutY="202.0" promptText="Adress Email" style="-fx-background-color: transparent; -fx-border-color: #273b40; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="passwordField" layoutX="101.0" layoutY="255.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-color: #273b40; -fx-border-width: 0px 0px 2px 0px;" />
+            <FontAwesomeIcon glyphName="USER" layoutX="64.0" layoutY="226.0" size="20">
+               <fill>
+                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.04146341463414634">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.529411792755127" green="0.05882352963089943" blue="0.47843137383461" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill></FontAwesomeIcon>
+            <FontAwesomeIcon glyphName="KEY" layoutX="63.0" layoutY="279.0" size="20" text="">
+               <fill>
+                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.04146341463414634">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.529411792755127" green="0.05882352963089943" blue="0.47843137383461" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill></FontAwesomeIcon>
+            <Button fx:id="signInButton" layoutX="135.0" layoutY="327.0" mnemonicParsing="false" onAction="#signin" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, reflect, #49dcc1 0.0%, #000000 100.0%);" text="Login" textFill="WHITE" />
+            <FontAwesomeIcon glyphName="USERS" layoutX="154.0" layoutY="120.0" size="40">
+               <fill>
+                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.04146341463414634">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.529411792755127" green="0.05882352963089943" blue="0.47843137383461" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill></FontAwesomeIcon>
+            <Text layoutX="81.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME ZONE" textAlignment="CENTER" wrappingWidth="187.46746826171875">
                <font>
-                  <Font size="23.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
+               <fill>
+                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.04146341463414634">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.529411792755127" green="0.05882352963089943" blue="0.47843137383461" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </fill>
             </Text>
             <Label layoutX="200.0" layoutY="297.0" onMouseClicked="#goToForgot" text="Forgot password ? " textFill="#888906" />
             <Label layoutX="27.0" layoutY="452.0" onMouseClicked="#goToForgot" text="you don't have an account ?" />
@@ -35,51 +121,40 @@
       </AnchorPane>
    </right>
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #273b40;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, reflect, #49dcc1 0.0%, #000000 100.0%);" BorderPane.alignment="CENTER">
          <children>
-            <FontAwesomeIcon glyphName="GAMEPAD" layoutX="143.0" layoutY="223.0" size="60">
-               <fill>
-                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.04146341463414634">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.05567251518368721" green="0.5127836465835571" blue="0.5368421077728271" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </fill>
-               <selectionFill>
-                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </selectionFill>
-            </FontAwesomeIcon>
-            <Text layoutX="110.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAMI">
+            <ImageView fitHeight="201.0" fitWidth="229.0" layoutX="62.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="53.0" layoutY="215.0" lineSpacing="4.0" prefHeight="46.0" prefWidth="238.0" text="ONLY GAMES" textAlignment="CENTER">
                <font>
-                  <Font name="Calibri Italic" size="56.0" />
+                  <Font name="Footlight MT Light" size="40.0" />
                </font>
+               <textFill>
+                  <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.04146341463414634">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.529411792755127" green="0.05882352963089943" blue="0.47843137383461" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+            <FontAwesomeIcon glyphName="" layoutX="90.0" layoutY="347.0" size="100" text="" textAlignment="CENTER" wrappingWidth="164.800048828125">
                <fill>
                   <RadialGradient centerX="0.6769911082444993" centerY="0.5" radius="0.5">
                      <stops>
@@ -95,13 +170,13 @@
                         </Stop>
                         <Stop offset="1.0">
                            <color>
-                              <Color red="0.054901961237192154" green="0.5137255191802979" blue="0.5372549295425415" />
+                              <Color red="0.529411792755127" green="0.05882352963089943" blue="0.47843137383461" />
                            </color>
                         </Stop>
                      </stops>
                   </RadialGradient>
                </fill>
-            </Text>
+            </FontAwesomeIcon>
          </children>
       </AnchorPane>
    </left>

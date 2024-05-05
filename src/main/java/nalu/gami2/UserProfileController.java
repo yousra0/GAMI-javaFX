@@ -29,6 +29,9 @@ public class UserProfileController {
     private user currentUser;
     private boolean inEditMode = false;
 
+    user connectedUser;
+
+
     public void initialize() {
         userService = new user_s(outil.database.getInstance().getConn());
         loadUserProfile();
@@ -119,5 +122,9 @@ public class UserProfileController {
             e.printStackTrace();
         }
 
+    }
+
+    void initUser(user u) {
+        this.connectedUser = u;
     }
 }

@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0" spacing="5.0" style="-fx-background-color: #2E2E2E; -fx-border-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="54.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="35.0" prefWidth="153.0" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="392.0" prefHeight="45.0" prefWidth="200.0" spacing="20.0" style="-fx-border-color: black; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="416.0" prefHeight="45.0" prefWidth="200.0" spacing="20.0" style="-fx-border-color: black; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="438.0" prefHeight="45.0" prefWidth="200.0" spacing="20.0" style="-fx-border-color: black; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="461.0" prefHeight="45.0" prefWidth="200.0" spacing="20.0" style="-fx-border-color: black; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="484.0" prefHeight="45.0" prefWidth="200.0" spacing="20.0" style="-fx-border-color: black; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1065.0" spacing="20.0" style="-fx-background-color: white; -fx-border-color: black;">
+               <children>
+                  <Pane prefHeight="55.0" prefWidth="282.0" style="-fx-background-color: #2E2E2E;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label layoutX="40.0" layoutY="4.0" prefHeight="44.0" prefWidth="170.0" text="HOME" textFill="WHITE">
+                           <font>
+                              <Font name="Bell MT Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 30;">
+                     <children>
+                        <ImageView fitHeight="43.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="26.0" prefWidth="202.0" promptText="Rcherche" style="-fx-background-radius: 30;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="profil" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <FontAwesomeIcon glyphName="CHECK" />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0" style="-fx-background-color: #191919;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Dashboard">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox>
+                     <children>
+                        <HBox prefHeight="120.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="46.0" prefWidth="240.0">
+                                       <children>
+                                          <Label text="PLAYERS">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Pane prefHeight="32.0" prefWidth="97.0" />
+                                          <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="74.0" prefWidth="242.0" text="123K">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="46.0" prefWidth="240.0">
+                                       <children>
+                                          <Label text="PLAYERS">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Pane prefHeight="32.0" prefWidth="97.0" />
+                                          <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="74.0" prefWidth="242.0" text="123K">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="46.0" prefWidth="240.0">
+                                       <children>
+                                          <Label text="PLAYERS">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Pane prefHeight="32.0" prefWidth="97.0" />
+                                          <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="74.0" prefWidth="242.0" text="123K">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="46.0" prefWidth="240.0">
+                                       <children>
+                                          <Label text="PLAYERS">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Pane prefHeight="32.0" prefWidth="97.0" />
+                                          <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="74.0" prefWidth="242.0" text="123K">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="290.0" prefWidth="100.0" spacing="30.0">
+                     <children>
+                        <Label text="PALEYERS">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="270.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                           <children>
+                              <VBox prefHeight="175.0" prefWidth="190.0">
+                                 <children>
+                                    <Pane prefHeight="130.0" prefWidth="190.0" style="-fx-background-color: yellow; -fx-background-radius: 10;">
+                                       <children>
+                                          <ImageView fitHeight="130.0" fitWidth="100.0" layoutX="38.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Label text="NAME">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="player@email.Com">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="date">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="pays">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="30.0" layoutY="30.0" prefHeight="175.0" prefWidth="190.0">
+                                 <children>
+                                    <Pane prefHeight="130.0" prefWidth="190.0" style="-fx-background-color: yellow; -fx-background-radius: 10;">
+                                       <children>
+                                          <ImageView fitHeight="130.0" fitWidth="100.0" layoutX="38.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Label text="NAME">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="player@email.Com">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="date">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="pays">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="240.0" layoutY="30.0" prefHeight="175.0" prefWidth="190.0">
+                                 <children>
+                                    <Pane prefHeight="130.0" prefWidth="190.0" style="-fx-background-color: yellow; -fx-background-radius: 10;">
+                                       <children>
+                                          <ImageView fitHeight="130.0" fitWidth="100.0" layoutX="38.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Label text="NAME">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="player@email.Com">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="date">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="pays">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="451.0" layoutY="30.0" prefHeight="175.0" prefWidth="190.0">
+                                 <children>
+                                    <Pane prefHeight="130.0" prefWidth="190.0" style="-fx-background-color: yellow; -fx-background-radius: 10;">
+                                       <children>
+                                          <ImageView fitHeight="130.0" fitWidth="100.0" layoutX="38.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Label text="NAME">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="player@email.Com">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="date">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="pays">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="661.0" layoutY="30.0" prefHeight="175.0" prefWidth="190.0">
+                                 <children>
+                                    <Pane prefHeight="130.0" prefWidth="190.0" style="-fx-background-color: yellow; -fx-background-radius: 10;">
+                                       <children>
+                                          <ImageView fitHeight="130.0" fitWidth="100.0" layoutX="38.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../IMAGES/416315841_2429292467279537_1172647866151555275_n-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Label text="NAME">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="player@email.Com">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="date">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="pays">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="170.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="490.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                           <children>
+                              <Label text="PALEYERS">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="30.0" prefWidth="490.0" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="490.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                           <children>
+                              <Label text="PALEYERS">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="30.0" prefWidth="490.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

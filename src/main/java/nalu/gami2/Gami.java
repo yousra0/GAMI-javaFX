@@ -20,7 +20,7 @@ public class Gami extends Application {
     // Méthode statique pour afficher la scène de sign-up
     public static void showSignUp() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Gami.class.getResource("sign-up.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Gami.class.getResource("sign-in.fxml"));
             primaryStage.setScene(new Scene(fxmlLoader.load()));
             primaryStage.setTitle("Inscription");
             primaryStage.show();

@@ -7,44 +7,50 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="598.0" prefWidth="516.0" spacing="10" style="-fx-background-color: #0e8389;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.UserProfileController">
+<VBox alignment="CENTER" prefHeight="645.0" prefWidth="516.0" spacing="10" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #fbff90 100.0%);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nalu.gami2.UserProfileController">
     <ImageView fx:id="profileImageView" fitHeight="124.0" fitWidth="146.0" preserveRatio="true" />
 
-    <Label style="-fx-font-weight: bold;" text="Nom" textFill="WHITE">
+    <Label style="-fx-font-weight: bold;" text="Nom">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="nameField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Prénom" textFill="WHITE">
+    <Label style="-fx-font-weight: bold;" text="Prénom">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="prenomField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Email" textFill="WHITE">
+    <Label style="-fx-font-weight: bold;" text="Email">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="emailField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Date de Naissance" textFill="WHITE">
+    <Label style="-fx-font-weight: bold;" text="Date de Naissance">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="datenaiField" alignment="CENTER" />
 
-    <Label style="-fx-font-weight: bold;" text="Pays" textFill="WHITE">
+    <Label style="-fx-font-weight: bold;" text="Pays">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
     </Label>
     <TextField fx:id="paysField" alignment="CENTER" />
 
-    <Button fx:id="editButton" onAction="#handleEditAction" text="Modifier" />
-   <Button mnemonicParsing="false" onAction="#logout" text="Se déconnecter" />
+    <Button fx:id="editButton" onAction="#handleEditAction" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #fbff90 100.0%);" text="Modifier">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font></Button>
+   <Button mnemonicParsing="false" onAction="#logout" style="-fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 38.6364%, radius 50.0%, #49dcc1 0.0%, #fbff90 100.0%);" text="Se déconnecter">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font></Button>
 </VBox>

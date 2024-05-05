@@ -21,6 +21,8 @@ public class SignInController {
     public Button signInButton;
 
 
+    user ConnectedUser;
+
     @FXML
     public void goToForgot(){
         try {
@@ -63,7 +65,13 @@ public class SignInController {
                     if (SessionManager.isAdmin()) {
                         Gami.showUsersView(); // Chargez la vue de la table des utilisateurs pour les admins.
                     } else {
+                        ConnectedUser = userService.getUserByEmail(email);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("user-profile.fxml"));
+                        Parent root = loader.load();
+                        UserProfileController controller = loader.getController();
+                        controller.initUser(ConnectedUser);
                         loadUserProfileView(); // Chargez la vue de profil pour les utilisateurs normaux.
+                        // CONNECTED USER
                     }
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
